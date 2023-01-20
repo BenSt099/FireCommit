@@ -19,7 +19,6 @@ def main():
     inputAction = input("Action: ")
 
     if(inputAction == "st"):
-        #print(startWithMsg())
         commitToRepo(startWithMsg())
         
     elif(inputAction == "op"):    
