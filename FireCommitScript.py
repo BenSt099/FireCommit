@@ -1,12 +1,25 @@
 from CommitMsg import *
 import subprocess
+import sys
 
 
 def commitToRepo(inputMsg):
 
+    inputStr = input("-> Abort(y/n) ? ")
+
+    if(inputStr == "y"):
+        exitProgram()
+
     secParam = "git commit -m \"" + inputMsg + "\""
     print(secParam)
     subprocess.run(secParam)
+
+def exitProgram():
+    print("""
+        - Stopping...
+        - FireCommit Exited (0)
+        """)
+    sys.exit()
 
 def main():
     print("""
@@ -28,9 +41,6 @@ def main():
         """)
         main()
     else:
-        print("""
-        - Stopping...
-        - FireCommit Exited (0)
-        """)
+        exitProgram()
 
 main()    
