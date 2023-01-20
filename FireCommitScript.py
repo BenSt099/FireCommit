@@ -33,6 +33,7 @@ def main():
 
     if(inputAction == "st"):
         commitToRepo(startWithMsg())
+        exitProgram()
         
     elif(inputAction == "op"):    
         print("""
