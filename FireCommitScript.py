@@ -4,7 +4,9 @@ import subprocess
 
 def commitToRepo(inputMsg):
 
-    subprocess.run(["git commit","-m \"" + inputMsg + "\""])
+    secParam = "git commit -m \"" + inputMsg + "\""
+    print(secParam)
+    subprocess.run(secParam)
 
 def main():
     print("""
@@ -17,8 +19,8 @@ def main():
     inputAction = input("Action: ")
 
     if(inputAction == "st"):
-        print(startWithMsg())
-        #commitToRepo(startWithMsg())
+        #print(startWithMsg())
+        commitToRepo(startWithMsg())
         
     elif(inputAction == "op"):    
         print("""
