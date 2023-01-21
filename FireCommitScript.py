@@ -151,7 +151,7 @@ def startWithMsg():
              ["🗓️ DATE",Date()],
              ["🕒 TIME",Time()]]
 
-    return tabulate(table, tablefmt='fancy_grid')
+    return tabulate(table, tablefmt='github')
 
 def commitToRepo(inputTopic,inputBody):
     print()
