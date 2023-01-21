@@ -1,5 +1,18 @@
 # 🔥FireCommit
 
+![](https://img.shields.io/badge/license-GNU%20Public%20v3-critical)
+![](https://img.shields.io/badge/version-v2%20--%20stable-brightgreen)
+![](https://img.shields.io/badge/lang-87b5e0?style=flat&logo=Python)
+![](https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git)
+![](https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship)
+
+<div style="text-align:center; margin-bottom:40px">
+<img src="expofcommit1.png"
+     alt="Exp of generated Commit msg #1" width="250px">
+<img src="expofcommit2.png"
+     alt="Exp of generated Commit msg #2" width="230px">
+</div>
+
 ## Description
 
 This simple script helps you write good git commit messages. It automatically generates a git commit in the same directory where you run it. 
