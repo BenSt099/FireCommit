@@ -151,7 +151,7 @@ def startWithMsg():
              ["🗓️ DATE",Date()],
              ["🕒 TIME",Time()]]
 
-    return tabulate(table, tablefmt='github')
+    return tabulate(table, tablefmt='outline')
 
 def commitToRepo(inputTopic,inputBody):
     print()
