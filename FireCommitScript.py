@@ -72,7 +72,8 @@ def Topic(inputMsgType):
         'd': 'DOCUMENTATION: 📓',
         'i': 'INFRASTRUCTURE: 🎛️',
        'do': 'DOCKER: 🐳',
-       'sp': 'SPRING: 🌿'
+       'sp': 'SPRING: 🌿',
+       'gr': 'GRADLE: 🐘'
     }
 
     dictPossibilitiesLayeredArch = {
@@ -88,7 +89,8 @@ def Topic(inputMsgType):
         'd': 'DOCUMENTATION: 📓',
         'i': 'INFRASTRUCTURE: 🎛️',
        'do': 'DOCKER: 🐳',
-       'sp': 'SPRING: 🌿'
+       'sp': 'SPRING: 🌿',
+       'gr': 'GRADLE: 🐘'
     }
 
     dictPossibilitiesDefault = {
@@ -113,7 +115,8 @@ def Topic(inputMsgType):
        'ii': 'INITIAL: 🏹',
        'u' : 'UPDATE: ⬆️',
        'do': 'DOCKER: 🐳',
-       'sp': 'SPRING: 🌿'
+       'sp': 'SPRING: 🌿',
+       'gr': 'GRADLE: 🐘'
     }
 
     if(inputMsgType == "oa"):
@@ -124,7 +127,7 @@ def Topic(inputMsgType):
         | GUI: 🖼️ (g)       | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)  |
         | INITIAL: 🏹 (ii)  | UPDATE: ⬆️ (u)               | TEST: 🛡️ (t)            | FIX: ✅ (fi)           |
         | MILESTONE: 💎 (m) | RELEASE: 🎆 (r)              | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) |
-        | DOCKER: 🐳 (do)   | SPRING: 🌿 (sp)              |
+        | DOCKER: 🐳 (do)   | SPRING: 🌿 (sp)              | GRADLE: 🐘 (gr)         |
         """)
         dictPossibilitiesTopics = dictPossibilitiesOnionArch.copy()
 
@@ -136,7 +139,7 @@ def Topic(inputMsgType):
         | GUI: 🖼️ (g)     | BUSINESS_LOGIC: ♟️ (bl) | PERSISTENCE: 🧱 (p)    | INITIAL: 🏹 (ii)  |
         | UPDATE: ⬆️ (u)  | TEST: 🛡️ (t)            | FIX: ✅ (fi)           | MILESTONE: 💎 (m) |
         | RELEASE: 🎆 (r) | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) | DOCKER: 🐳 (do)   | 
-        | SPRING: 🌿 (sp) |
+        | SPRING: 🌿 (sp) | GRADLE: 🐘              |
         """)
         dictPossibilitiesTopics = dictPossibilitiesLayeredArch.copy()
 
@@ -150,7 +153,7 @@ def Topic(inputMsgType):
         | LINK: 🔗 (l)         | REFACTORING: 🔪 (rf)         | GUI: 🖼️ (g)             | BUSINESS_LOGIC: ♟️ (bl)      |
         | ARCHITECTURE: 🏬 (a) | INFRASTRUCTURE: 🎛️ (i)       | INITIAL: 🏹 (ii)        | UPDATE: ⬆️ (u)               |
         | PERSISTENCE: 🧱 (p)  | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)        |
-        | DOCKER: 🐳 (do)      | SPRING: 🌿 (sp)              |  
+        | DOCKER: 🐳 (do)      | SPRING: 🌿 (sp)              | GRADLE: 🐘              | 
         """)
         dictPossibilitiesTopics = dictPossibilitiesDefault.copy()
     
