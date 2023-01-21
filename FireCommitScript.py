@@ -140,10 +140,9 @@ def Topic(inputMsgType):
     return dictPossibilitiesTopics.get(top,"UPDATE: ⬆️")  
 
 
-def startWithMsg(topic):
+def startWithMsg():
 
-    table = [[Topic(topic),""],
-             ["",""],
+    table = [#[Topic(topic),""],
              ["👥 AUTHORS",Authors()],
              ["🧮 NO. OF CHANGES",NoOfChanges()],
              ["🔑⌨️ KEYWORDS",Keywords()],
@@ -157,9 +156,9 @@ def startWithMsg(topic):
     # return "| " + Topic(topic) + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " | " + Branch() +  " |\n"  + "| " + DateAndTime() + " |\n"
     return tabulate(table, tablefmt='grid')
 
-def commitToRepo(inputMsg):
+def commitToRepo(inputTopic,inputBody):
     print()
-    
+    inputMsg = inputTopic + "\n" + inputBody
     print("Commit Message: \n")
     print(inputMsg)
     print()
@@ -201,7 +200,7 @@ def main():
         """)
         print()
         commitmsg = input("Type of Commit-Msg: ")
-        commitToRepo(startWithMsg(commitmsg))
+        commitToRepo(Topic(commitmsg),startWithMsg())
         exitProgram()
         
     elif(inputAction == "op"):    
