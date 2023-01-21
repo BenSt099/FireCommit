@@ -17,7 +17,7 @@ def Branch():
 def DateAndTime():
     dateNow = date.today()
     timeNow = datetime.now()
-    return "🗓️ DATE: " + dateNow.strftime("%B %d, %Y") + "| 🕒 TIME: " + timeNow.strftime("%H:%M:%S")
+    return "🗓️ DATE: " + dateNow.strftime("%B %d, %Y") + " | 🕒 TIME: " + timeNow.strftime("%H:%M:%S")
 
 def Authors():
     
