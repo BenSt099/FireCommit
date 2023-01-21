@@ -99,15 +99,18 @@ def startWithMsg():
 
 
 def commitToRepo(inputMsg):
-
+    print()
+    
+    print("Commit Message: \n")
+    print(inputMsg)
+    print()
     inputStr = input(">>> Proceed (Y|N) ? ")
 
     if(inputStr == "N"):
         exitProgram()
-
     secParam = "git commit -m \"" + inputMsg + "\""
-    #print(secParam)
     subprocess.run(secParam)
+    print()
     runGitPush = input(">>> Run Git Push (Y|N) ? ")
     if(runGitPush == "N"):
         exitProgram()
