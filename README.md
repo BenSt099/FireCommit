@@ -12,8 +12,8 @@ This simple script helps you write good git commit messages. It automatically ge
 
 In your git repository, add the following to your `.gitignore` : 
 
-    > FireCommitScript.py
-    > CommitMsg.py
+    FireCommitScript.py
+    __pycache__/
 
 Next, include both files into your repo. See **Usage** for starting the script.
 
