@@ -142,7 +142,7 @@ def Topic(inputMsgType):
 
 def startWithMsg():
 
-    table = [#[Topic(topic),""],
+    table = [
              ["👥 AUTHORS",Authors()],
              ["🧮 NO. OF CHANGES",NoOfChanges()],
              ["🔑⌨️ KEYWORDS",Keywords()],
@@ -151,10 +151,7 @@ def startWithMsg():
              ["🗓️ DATE",Date()],
              ["🕒 TIME",Time()]]
 
-    #print(tabulate(table, tablefmt='grid'))
-    
-    # return "| " + Topic(topic) + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " | " + Branch() +  " |\n"  + "| " + DateAndTime() + " |\n"
-    return tabulate(table, tablefmt='grid')
+    return tabulate(table, tablefmt='fancy_grid')
 
 def commitToRepo(inputTopic,inputBody):
     print()
