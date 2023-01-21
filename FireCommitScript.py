@@ -143,15 +143,15 @@ def Topic(inputMsgType):
 def startWithMsg():
 
     table = [
-             ["👥 AUTHORS",Authors()],
+             ["👥 AUTHORS       ",Authors()],
              ["🧮 NO. OF CHANGES",NoOfChanges()],
-             ["🔑⌨️ KEYWORDS",Keywords()],
-             ["🛠️ CHANGES",Changes()],
-             ["🔱 BRANCH",Branch()],
-             ["🗓️ DATE",Date()],
-             ["🕒 TIME",Time()]]
+             ["🔑⌨️ KEYWORDS    ",Keywords()],
+             ["🛠️ CHANGES       ",Changes()],
+             ["🔱 BRANCH        ",Branch()],
+             ["🗓️ DATE          ",Date()],
+             ["🕒 TIME          ",Time()]]
 
-    return tabulate(table, tablefmt='outline')
+    return tabulate(table, tablefmt='rounded_grid')
 
 def commitToRepo(inputTopic,inputBody):
     print()
