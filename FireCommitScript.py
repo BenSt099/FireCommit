@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 from prettytable import PrettyTable
+from prettytable import PLAIN_COLUMNS
 from datetime import date
 from datetime import datetime
 
@@ -143,14 +144,17 @@ def Topic(inputMsgType):
 def startWithMsg():
 
     x = PrettyTable()
+    x.field_names = ["Content","Description"]
+
     x.add_rows([
-             ["👥 AUTHORS       ",Authors()],
+             ["👥 AUTHORS",Authors()],
              ["🧮 NO. OF CHANGES",NoOfChanges()],
-             ["🔑⌨️ KEYWORDS    ",Keywords()],
-             ["🛠️ CHANGES       ",Changes()],
-             ["🔱 BRANCH        ",Branch()],
-             ["🗓️ DATE          ",Date()],
-             ["🕒 TIME          ",Time()]])
+             ["🔑⌨️ KEYWORDS",Keywords()],
+             ["🛠️ CHANGES",Changes()],
+             ["🔱 BRANCH",Branch()],
+             ["🗓️ DATE",Date()],
+             ["🕒 TIME",Time()]])
+    x.set_style(PLAIN_COLUMNS)
 
     return x.get_string()
 
