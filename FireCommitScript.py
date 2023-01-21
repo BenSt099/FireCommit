@@ -100,14 +100,18 @@ def startWithMsg():
 
 def commitToRepo(inputMsg):
 
-    inputStr = input("-> Abort(y/n) ? ")
+    inputStr = input(">>> Proceed (Y|N) ? ")
 
-    if(inputStr == "y"):
+    if(inputStr == "N"):
         exitProgram()
 
     secParam = "git commit -m \"" + inputMsg + "\""
-    print(secParam)
+    #print(secParam)
     subprocess.run(secParam)
+    runGitPush = input(">>> Run Git Push (Y|N) ? ")
+    if(runGitPush == "N"):
+        exitProgram()
+    subprocess.run("git push")
 
 def exitProgram():
     print("""
