@@ -2,7 +2,7 @@
 
 ## Description
 
-This simple script helps you write good git commit messages. It automatically generates a git commit in the same directory where you run it.
+This simple script helps you write good git commit messages. It automatically generates a git commit in the same directory where you run it. 
 
 ## Requirements
 
@@ -13,11 +13,14 @@ This simple script helps you write good git commit messages. It automatically ge
 In your git repository, add the following to your `.gitignore` : 
 
     FireCommitScript.py
-    __pycache__/
 
-Next, include both files into your repo. See **Usage** for starting the script.
+Plus, add the content of the `.gitignore` in this repo ([link](https://github.com/BenSt099/FireCommit/blob/main/.gitignore)) to ignore all python generated files. Then, make a commit.
+
+Next, include the file __FireCommitScript.py__ into your repo. See **Usage** for starting the script.
 
 ## Usage
+
+Run the following in a terminal / powershell:
 
 ```
 python3 FireCommitScript.py

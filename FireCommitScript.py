@@ -1,22 +1,7 @@
-import subprocess
 import sys
+import subprocess
 from datetime import date
 from datetime import datetime
-
-
-
-
-
-"""
-Author(s): 👥
-Date: 🗓️, Time: 🕒
-Topic: 📋: FIX: ✅, REFACTORING: 🔪, TEST: 🛡️, INITIAL: 🏹, GUI: 🖼️, BUSINESS_LOGIC: ♟️; INFRASTRUCTURE: 🎛️, ARCHITECTURE: 🏬, MILESTONE: 💎, RELEASE: 🎆, DOCUMENTATION: 📓,
-LINK: 🔗, CONTINUOUS_DELIVERY: ♾️, WARNING: ⚠️, FAILED: ❌, UPDATE: ⬆️
-Keyword(s): 🔑⌨️
-Change(s): 🛠️: LOCAL: 📌, GLOBAL: 🌐, MODULE: 🗃️, SUBMODULE: 🗄️
-No. of Changes: 🧮
-"""
-
 
 
 def DateAndTime():
@@ -46,8 +31,38 @@ def Keywords():
     keywords = input("🔑⌨️ Keyword(s): ")
     return "🔑⌨️ KEYWORDS: " + keywords    
 
-def Topic():  
-    dictPossibilitiesTopics = {
+def Topic(inputMsgType):  
+
+    dictPossibilitiesOnionArch = {
+        'g': 'GUI: 🖼️',
+       'as': 'APPLICATION_SERVICE: 💾',
+       'ds': 'DOMAIN_SERVICE: 🪛',
+       'dm': 'DOMAIN_MODEL: 🥝',
+       'ii': 'INITIAL: 🏹',
+        'u': 'UPDATE: ⬆️',
+        't': 'TEST: 🛡️',
+       'fi': 'FIX: ✅',
+        'm': 'MILESTONE: 💎',
+        'r': 'RELEASE: 🎆',
+        'd': 'DOCUMENTATION: 📓',
+        'i': 'INFRASTRUCTURE: 🎛️'
+    }
+
+    dictPossibilitiesLayeredArch = {
+        'g': 'GUI: 🖼️',
+       'bl': 'BUSINESS_LOGIC: ♟️',
+        'p': 'PERSISTENCE: 🧱',
+       'ii': 'INITIAL: 🏹',
+        'u': 'UPDATE: ⬆️',
+        't': 'TEST: 🛡️',
+       'fi': 'FIX: ✅',
+        'm': 'MILESTONE: 💎',
+        'r': 'RELEASE: 🎆',
+        'd': 'DOCUMENTATION: 📓',
+        'i': 'INFRASTRUCTURE: 🎛️'
+    }
+
+    dictPossibilitiesDefault = {
        'fi': 'FIX: ✅',
         'w': 'WARNING: ⚠️',
         'f': 'FAILED: ❌',
@@ -60,42 +75,58 @@ def Topic():
        'rf': 'REFACTORING: 🔪',
         'g': 'GUI: 🖼️',
        'bl': 'BUSINESS_LOGIC: ♟️',
+       'as': 'APPLICATION_SERVICE: 💾',
+       'ds': 'DOMAIN_SERVICE: 🪛',
+       'dm': 'DOMAIN_MODEL: 🥝',
+        'p': 'PERSISTENCE: 🧱',
         'a': 'ARCHITECTURE: 🏬',
         'i': 'INFRASTRUCTURE: 🎛️',
        'ii': 'INITIAL: 🏹',
        'u' : 'UPDATE: ⬆️'
     }
 
-    print("""📋 TOPIC: FIX: ✅ (fi), WARNING: ⚠️ (w), FAILED: ❌ (f), CONTINUOUS_DELIVERY: ♾️ (cd), TEST: 🛡️ (t), MILESTONE: 💎 (m), RELEASE: 🎆 (r),
-    DOCUMENTATION: 📓 (d), LINK: 🔗 (l), REFACTORING: 🔪 (rf), GUI: 🖼️ (g), BUSINESS_LOGIC: ♟️ (bl), ARCHITECTURE: 🏬 (a), INFRASTRUCTURE: 🎛️ (i), INITIAL: 🏹 (ii),
-    UPDATE: ⬆️ (u)""")
+    if(inputMsgType == "oa"):
+        print()
+        print("""
+        Possible 📋 TOPICS:
+
+        | GUI: 🖼️ (g)       | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)  |
+        | INITIAL: 🏹 (ii)  | UPDATE: ⬆️ (u)               | TEST: 🛡️ (t)            | FIX: ✅ (fi)           |
+        | MILESTONE: 💎 (m) | RELEASE: 🎆 (r)              | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) |
+        """)
+        dictPossibilitiesTopics = dictPossibilitiesOnionArch.copy()
+
+    elif(inputMsgType == "la"):
+        print()
+        print("""
+        Possible 📋 TOPICS:
+        
+        | GUI: 🖼️ (g)     | BUSINESS_LOGIC: ♟️ (bl) | PERSISTENCE: 🧱 (p)    | INITIAL: 🏹 (ii)  |
+        | UPDATE: ⬆️ (u)  | TEST: 🛡️ (t)            | FIX: ✅ (fi)           | MILESTONE: 💎 (m) |
+        | RELEASE: 🎆 (r) | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) |
+        """)
+        dictPossibilitiesTopics = dictPossibilitiesLayeredArch.copy()
+
+    else: #if(inputMsgType == "c"):
+        print()
+        print("""
+        Possible 📋 TOPICS:
+
+        | FIX: ✅ (fi)         | WARNING: ⚠️ (w)              | FAILED: ❌ (f)          | CONTINUOUS_DELIVERY: ♾️ (cd) |
+        | TEST: 🛡️ (t)         | MILESTONE: 💎 (m)            | RELEASE: 🎆 (r)         | DOCUMENTATION: 📓 (d)        |
+        | LINK: 🔗 (l)         | REFACTORING: 🔪 (rf)         | GUI: 🖼️ (g)             | BUSINESS_LOGIC: ♟️ (bl)      |  
+        | ARCHITECTURE: 🏬 (a) | INFRASTRUCTURE: 🎛️ (i)       | INITIAL: 🏹 (ii)        | UPDATE: ⬆️ (u)               |   
+        | PERSISTENCE: 🧱 (p)  | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)        |  
+        """)
+        dictPossibilitiesTopics = dictPossibilitiesDefault.copy()
+    
+    print()
     top = input("📋 TOPIC: ")
     return "📋 TOPIC: " + dictPossibilitiesTopics.get(top,"UPDATE: ⬆️")  
 
-def startWithMsg():
-    return "| " + Topic() + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " |\n"  + "| " + DateAndTime() + " |\n"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def startWithMsg(topic):
+    return "| " + Topic(topic) + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " |\n"  + "| " + DateAndTime() + " |\n"
 
 
 def commitToRepo(inputMsg):
@@ -106,13 +137,13 @@ def commitToRepo(inputMsg):
     print()
     inputStr = input(">>> Proceed (Y|N) ? ")
 
-    if(inputStr == "N"):
+    if(inputStr == "N" or inputStr == "n"):
         exitProgram()
     secParam = "git commit -m \"" + inputMsg + "\""
     subprocess.run(secParam)
     print()
     runGitPush = input(">>> Run Git Push (Y|N) ? ")
-    if(runGitPush == "N"):
+    if(runGitPush == "N" or runGitPush == "n"):
         exitProgram()
     subprocess.run("git push")
 
@@ -130,11 +161,19 @@ def main():
     - Start:   st
     - Starting...
     """)
-
+    
     inputAction = input("Action: ")
 
     if(inputAction == "st"):
-        commitToRepo(startWithMsg())
+        print()
+        print("""
+        | Layered-Architecture  (la) | 
+        | Onion-Architecture    (oa) | 
+        | Custom                 (c) |
+        """)
+        print()
+        commitmsg = input("Type of Commit-Msg: ")
+        commitToRepo(startWithMsg(commitmsg))
         exitProgram()
         
     elif(inputAction == "op"):    
