@@ -27,6 +27,11 @@ Run the following in a terminal / powershell :
 ./ FireCommitScript.py
 ```
 
+## Documentation
+
+    - The script is mostly self-explaining.
+    - If you still need some help, type "op" when the script starts.
+
 ## License
 
 This project is licensed under GNU General Public License v3.0. Fore more information, click [here](https://github.com/BenSt099/FireCommit/blob/main/LICENSE).

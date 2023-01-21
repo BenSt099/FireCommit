@@ -29,9 +29,18 @@ def Authors():
     listofAuthors = input("👥 Author(s): ")
     return listofAuthors
 
-def NoOfChanges():
-    no = input("🧮 No. of Changes: ")
-    return no
+def ShortListOfChanges():
+
+    listOfChanges = "🗒️ DESCRIPTION OF CHANGES: \n\n"
+    print("🗒️ DESCRIPTION OF CHANGES: ")
+    print("If you're done, type: r")
+    while(True):
+        inputItem = input("Item: ")
+        if(inputItem == "r"):
+            break
+        listOfChanges = listOfChanges + "- " + inputItem + "\n"
+
+    return listOfChanges
 
 def Changes():
     dictPossibilitiesChanges = {
@@ -61,7 +70,9 @@ def Topic(inputMsgType):
         'm': 'MILESTONE: 💎',
         'r': 'RELEASE: 🎆',
         'd': 'DOCUMENTATION: 📓',
-        'i': 'INFRASTRUCTURE: 🎛️'
+        'i': 'INFRASTRUCTURE: 🎛️',
+       'do': 'DOCKER: 🐳',
+       'sp': 'SPRING: 🌿'
     }
 
     dictPossibilitiesLayeredArch = {
@@ -75,7 +86,9 @@ def Topic(inputMsgType):
         'm': 'MILESTONE: 💎',
         'r': 'RELEASE: 🎆',
         'd': 'DOCUMENTATION: 📓',
-        'i': 'INFRASTRUCTURE: 🎛️'
+        'i': 'INFRASTRUCTURE: 🎛️',
+       'do': 'DOCKER: 🐳',
+       'sp': 'SPRING: 🌿'
     }
 
     dictPossibilitiesDefault = {
@@ -98,7 +111,9 @@ def Topic(inputMsgType):
         'a': 'ARCHITECTURE: 🏬',
         'i': 'INFRASTRUCTURE: 🎛️',
        'ii': 'INITIAL: 🏹',
-       'u' : 'UPDATE: ⬆️'
+       'u' : 'UPDATE: ⬆️',
+       'do': 'DOCKER: 🐳',
+       'sp': 'SPRING: 🌿'
     }
 
     if(inputMsgType == "oa"):
@@ -109,6 +124,7 @@ def Topic(inputMsgType):
         | GUI: 🖼️ (g)       | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)  |
         | INITIAL: 🏹 (ii)  | UPDATE: ⬆️ (u)               | TEST: 🛡️ (t)            | FIX: ✅ (fi)           |
         | MILESTONE: 💎 (m) | RELEASE: 🎆 (r)              | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) |
+        | DOCKER: 🐳 (do)   | SPRING: 🌿 (sp)              |
         """)
         dictPossibilitiesTopics = dictPossibilitiesOnionArch.copy()
 
@@ -119,7 +135,8 @@ def Topic(inputMsgType):
         
         | GUI: 🖼️ (g)     | BUSINESS_LOGIC: ♟️ (bl) | PERSISTENCE: 🧱 (p)    | INITIAL: 🏹 (ii)  |
         | UPDATE: ⬆️ (u)  | TEST: 🛡️ (t)            | FIX: ✅ (fi)           | MILESTONE: 💎 (m) |
-        | RELEASE: 🎆 (r) | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) |
+        | RELEASE: 🎆 (r) | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) | DOCKER: 🐳 (do)   | 
+        | SPRING: 🌿 (sp) |
         """)
         dictPossibilitiesTopics = dictPossibilitiesLayeredArch.copy()
 
@@ -130,9 +147,10 @@ def Topic(inputMsgType):
 
         | FIX: ✅ (fi)         | WARNING: ⚠️ (w)              | FAILED: ❌ (f)          | CONTINUOUS_DELIVERY: ♾️ (cd) |
         | TEST: 🛡️ (t)         | MILESTONE: 💎 (m)            | RELEASE: 🎆 (r)         | DOCUMENTATION: 📓 (d)        |
-        | LINK: 🔗 (l)         | REFACTORING: 🔪 (rf)         | GUI: 🖼️ (g)             | BUSINESS_LOGIC: ♟️ (bl)      |  
-        | ARCHITECTURE: 🏬 (a) | INFRASTRUCTURE: 🎛️ (i)       | INITIAL: 🏹 (ii)        | UPDATE: ⬆️ (u)               |   
-        | PERSISTENCE: 🧱 (p)  | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)        |  
+        | LINK: 🔗 (l)         | REFACTORING: 🔪 (rf)         | GUI: 🖼️ (g)             | BUSINESS_LOGIC: ♟️ (bl)      |
+        | ARCHITECTURE: 🏬 (a) | INFRASTRUCTURE: 🎛️ (i)       | INITIAL: 🏹 (ii)        | UPDATE: ⬆️ (u)               |
+        | PERSISTENCE: 🧱 (p)  | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)        |
+        | DOCKER: 🐳 (do)      | SPRING: 🌿 (sp)              |  
         """)
         dictPossibilitiesTopics = dictPossibilitiesDefault.copy()
     
@@ -148,7 +166,6 @@ def startWithMsg():
 
     x.add_rows([
              ["👥 AUTHORS",Authors()],
-             ["🧮 NO. OF CHANGES",NoOfChanges()],
              ["🔑⌨️ KEYWORDS",Keywords()],
              ["🛠️ CHANGES",Changes()],
              ["🔱 BRANCH",Branch()],
@@ -160,18 +177,20 @@ def startWithMsg():
 
 def commitToRepo(inputTopic,inputBody):
     print()
-    inputMsg = inputTopic + "\n" + inputBody
+    inputMsg = inputTopic + "\n" + inputBody + "\n\n" + ShortListOfChanges()
+    print()
+    print("___________________________________________")
     print("Commit Message: \n")
     print(inputMsg)
     print()
-    inputStr = input(">>> Proceed (Y|N) ? ")
+    inputStr = input(">>> Proceed [Y | N] ? ")
 
     if(inputStr == "N" or inputStr == "n"):
         exitProgram()
     secParam = "git commit -m \"" + inputMsg + "\""
     subprocess.run(secParam)
     print()
-    runGitPush = input(">>> Run Git Push (Y|N) ? ")
+    runGitPush = input(">>> Run Git Push [Y | N] ? ")
     if(runGitPush == "N" or runGitPush == "n"):
         exitProgram()
     subprocess.run("git push")
@@ -179,7 +198,7 @@ def commitToRepo(inputTopic,inputBody):
 def exitProgram():
     print("""
         - Stopping...
-        - FireCommit Exited (0)
+        - FireCommit Exited
         """)
     sys.exit()
 
@@ -187,13 +206,12 @@ def main():
     print("""
     🔥FireCommit - V.2.0.0
     - Options: op
-    - Start:   st
-    - Starting...
+    - Start:   s
     """)
     
     inputAction = input("Action: ")
 
-    if(inputAction == "st"):
+    if(inputAction == "s"):
         print()
         print("""
         | Layered-Architecture  (la) | 
@@ -208,7 +226,42 @@ def main():
     elif(inputAction == "op"):    
         print("""
         Options:
-            - Action: st / op (Start to create a commit message | See Options)
+            - Action:
+                    - s: start to assemble a commit message
+                    - op: display options
+                    - <Enter> quit script
+
+            - Type of Commit-Msg:
+                    - Commit Msg for Layered Architecture
+                    - Commit Msg for Onion Architecture
+                    - Assemble a custom commit message
+
+            - Topics: 
+                    - Select a basic topic for the commit
+                    - If you can't put it into one word, 
+                      your probably take to many steps in
+                      one commit.
+
+            - Author(s): 
+                    - Name one or more authors
+
+            - Keyword(s):
+                    - Add some keywords to the commit
+
+            - Changes:
+                    - Helps you to specify the impact of
+                      your commit
+                    - Does it effect one file in a package 
+                      or the whole project ?
+                    - Module / Submodule options: for Gradle
+                      Moduls
+
+            - Branch:
+                    - Specify the branch where the commit is
+                      located
+
+            - Description of Changes:
+                    - Specify what the commit is about to do
         """)
         main()
     else:
