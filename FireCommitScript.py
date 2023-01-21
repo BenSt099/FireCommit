@@ -133,7 +133,7 @@ def Topic(inputMsgType):
     
     print()
     top = input("📋 TOPIC: ")
-    return "📋 TOPIC: " + dictPossibilitiesTopics.get(top,"UPDATE: ⬆️")  
+    return dictPossibilitiesTopics.get(top,"UPDATE: ⬆️")  
 
 
 def startWithMsg(topic):
