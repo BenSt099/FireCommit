@@ -1,8 +1,18 @@
+import os
 import sys
 import subprocess
 from datetime import date
 from datetime import datetime
 
+def Branch():
+    print("🔱 BRANCH")
+    print(os.popen("git branch").read())
+    retOS = os.popen("git branch").read()
+    print("To use default one, type: d")
+    branchOfRepo = input("🔱 BRANCH: ")
+    if(branchOfRepo == "d"):
+        return "🔱 BRANCH: " + str(retOS)
+    return "🔱 BRANCH: " + branchOfRepo
 
 def DateAndTime():
     dateNow = date.today()
@@ -10,6 +20,7 @@ def DateAndTime():
     return "🗓️ DATE: " + dateNow.strftime("%B %d, %Y") + "| 🕒 TIME: " + timeNow.strftime("%H:%M:%S")
 
 def Authors():
+    
     listofAuthors = input("👥 Author(s): ")
     return "👥 AUTHORS: " + listofAuthors
 
@@ -107,7 +118,7 @@ def Topic(inputMsgType):
         """)
         dictPossibilitiesTopics = dictPossibilitiesLayeredArch.copy()
 
-    else: #if(inputMsgType == "c"):
+    else:
         print()
         print("""
         Possible 📋 TOPICS:
@@ -126,7 +137,8 @@ def Topic(inputMsgType):
 
 
 def startWithMsg(topic):
-    return "| " + Topic(topic) + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " |\n"  + "| " + DateAndTime() + " |\n"
+    
+    return "| " + Topic(topic) + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " | " + Branch() +  " |\n"  + "| " + DateAndTime() + " |\n"
 
 
 def commitToRepo(inputMsg):
