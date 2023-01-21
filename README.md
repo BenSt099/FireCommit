@@ -24,7 +24,7 @@ Next, include the file __FireCommitScript.py__ into your repo. See **Usage** for
 Run the following in a terminal / powershell :
 
 ```
-python3 FireCommitScript.py
+./ FireCommitScript.py
 ```
 
 ## License
