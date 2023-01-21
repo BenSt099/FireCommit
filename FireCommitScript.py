@@ -11,7 +11,7 @@ def Branch():
     print("To use default one, type: d")
     branchOfRepo = input("🔱 BRANCH: ")
     if(branchOfRepo == "d"):
-        return "🔱 BRANCH: " + str(retOS)
+        return "🔱 BRANCH: " + retOS.strip()
     return "🔱 BRANCH: " + branchOfRepo
 
 def DateAndTime():
