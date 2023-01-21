@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+from tabulate import tabulate
 from datetime import date
 from datetime import datetime
 
@@ -11,22 +12,25 @@ def Branch():
     print("To use default one, type: d")
     branchOfRepo = input("🔱 BRANCH: ")
     if(branchOfRepo == "d"):
-        return "🔱 BRANCH: " + retOS.strip()
-    return "🔱 BRANCH: " + branchOfRepo
+        return retOS.strip()
+    return branchOfRepo
 
-def DateAndTime():
+def Date():
     dateNow = date.today()
+    return dateNow.strftime("%B %d, %Y") 
+
+def Time():
     timeNow = datetime.now()
-    return "🗓️ DATE: " + dateNow.strftime("%B %d, %Y") + " | 🕒 TIME: " + timeNow.strftime("%H:%M:%S")
+    return timeNow.strftime("%H:%M:%S")
 
 def Authors():
     
     listofAuthors = input("👥 Author(s): ")
-    return "👥 AUTHORS: " + listofAuthors
+    return listofAuthors
 
 def NoOfChanges():
     no = input("🧮 No. of Changes: ")
-    return "🧮 NO. OF CHANGES: " + no
+    return no
 
 def Changes():
     dictPossibilitiesChanges = {
@@ -36,11 +40,11 @@ def Changes():
        'sm': 'SUBMODULE: 🗄️'
     }
     ch = input("🛠️ Changes (LOCAL (l): 📌, GLOBAL (g): 🌐, MODULE (m): 🗃️, SUBMODULE (sm): 🗄️): ")
-    return "🛠️ CHANGES: " + dictPossibilitiesChanges.get(ch,"GLOBAL: 🌐")
+    return dictPossibilitiesChanges.get(ch,"GLOBAL: 🌐")
 
 def Keywords():
     keywords = input("🔑⌨️ Keyword(s): ")
-    return "🔑⌨️ KEYWORDS: " + keywords    
+    return keywords    
 
 def Topic(inputMsgType):  
 
@@ -137,9 +141,21 @@ def Topic(inputMsgType):
 
 
 def startWithMsg(topic):
-    
-    return "| " + Topic(topic) + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " | " + Branch() +  " |\n"  + "| " + DateAndTime() + " |\n"
 
+    table = [[Topic(topic),""],
+             ["",""],
+             ["👥 AUTHORS",Authors()],
+             ["🧮 NO. OF CHANGES",NoOfChanges()],
+             ["🔑⌨️ KEYWORDS",Keywords()],
+             ["🛠️ CHANGES",Changes()],
+             ["🔱 BRANCH",Branch()],
+             ["🗓️ DATE",Date()],
+             ["🕒 TIME",Time()]]
+
+    #print(tabulate(table, tablefmt='grid'))
+    
+    # return "| " + Topic(topic) + " |\n" +  "| " + Authors() + " | " + NoOfChanges() + " | " + Keywords() + " |\n" + "| " + Changes() + " | " + Branch() +  " |\n"  + "| " + DateAndTime() + " |\n"
+    return tabulate(table, tablefmt='grid')
 
 def commitToRepo(inputMsg):
     print()

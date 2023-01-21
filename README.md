@@ -6,7 +6,8 @@ This simple script helps you write good git commit messages. It automatically ge
 
 ## Requirements
 
-- Python Vesion 3.0 or higher
+- Python Vesion 3.0 or higher [[Installation]](https://www.python.org/downloads/)
+- tabulate library [Installation (terminal | powershell): `pip install tabulate`]
 
 ## Installation
 
@@ -20,7 +21,7 @@ Next, include the file __FireCommitScript.py__ into your repo. See **Usage** for
 
 ## Usage
 
-Run the following in a terminal / powershell:
+Run the following in a terminal / powershell :
 
 ```
 python3 FireCommitScript.py
