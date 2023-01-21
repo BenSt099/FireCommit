@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-from tabulate import tabulate
+from prettytable import PrettyTable
 from datetime import date
 from datetime import datetime
 
@@ -142,16 +142,17 @@ def Topic(inputMsgType):
 
 def startWithMsg():
 
-    table = [
+    x = PrettyTable()
+    x.add_rows([
              ["👥 AUTHORS       ",Authors()],
              ["🧮 NO. OF CHANGES",NoOfChanges()],
              ["🔑⌨️ KEYWORDS    ",Keywords()],
              ["🛠️ CHANGES       ",Changes()],
              ["🔱 BRANCH        ",Branch()],
              ["🗓️ DATE          ",Date()],
-             ["🕒 TIME          ",Time()]]
+             ["🕒 TIME          ",Time()]])
 
-    return tabulate(table, tablefmt='rounded_grid')
+    return x.get_string()
 
 def commitToRepo(inputTopic,inputBody):
     print()

@@ -7,7 +7,7 @@ This simple script helps you write good git commit messages. It automatically ge
 ## Requirements
 
 - Python Vesion 3.0 or higher [[Installation]](https://www.python.org/downloads/)
-- tabulate library [Installation (terminal | powershell): `pip install tabulate`]
+- prettytable library [[Installation]](https://pypi.org/project/prettytable/)
 
 ## Installation
 
