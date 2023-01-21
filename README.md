@@ -7,9 +7,9 @@
 ![](https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship)
 
 <div style="text-align:center; margin-bottom:40px">
-<img src="expofcommit1.png"
+<img src="./pictures/expofcommit1.png"
      alt="Exp of generated Commit msg #1" width="250px">
-<img src="expofcommit2.png"
+<img src="./pictures/expofcommit2.png"
      alt="Exp of generated Commit msg #2" width="230px">
 </div>
 
