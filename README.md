@@ -60,7 +60,7 @@ Using `git shortlog` will not help:
 To search for single commits more easily use
 
 ```
-git log --pretty=format:"%cn committed %h on %cd"
+git log --pretty=format:"%cn committed %h on %cd with Topic: %f"
 ```
 or similar options.
 
