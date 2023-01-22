@@ -25,9 +25,16 @@ def Time():
     return timeNow.strftime("%H:%M:%S")
 
 def Authors():
-    
-    listofAuthors = input("👥 Author(s): ")
-    return listofAuthors
+
+    print("👥 Author(s)")
+    print(os.popen("git config user.name").read())
+    retOs = os.popen("git config user.name").read()
+    print("To use default one, type: d")
+    authorS = input("👥 Author(s): ")
+    if(authorS == "d"):
+        return retOs.strip()
+
+    return authorS
 
 def ShortListOfChanges():
 
@@ -247,6 +254,9 @@ def main():
 
             - Author(s): 
                     - Name one or more authors
+                    - Type d and the script will use the default
+                      name that is currently listed in the git 
+                      config file.
 
             - Keyword(s):
                     - Add some keywords to the commit
