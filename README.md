@@ -42,8 +42,27 @@ Run the following in a terminal / powershell :
 
 ## Documentation
 
-    - The script is mostly self-explaining.
-    - If you still need some help, type "op" when the script starts.
+- The script is mostly self-explaining.
+- If you still need some help, type "op" when the script starts.
+
+## Known Issues
+
+When writing a verbose commit message, a compromise must be made regarding the readability of the git log.
+
+If you run `git log`, you may see a large amount of text that would fill up pages.
+Using `git shortlog` will not help: 
+
+<div style="margin-top:30px; margin-bottom:30px">
+<img src="./pictures/BadGitShortLog.png"
+     alt="Bad Example of git shortlog" >
+</div>
+
+To search for single commits more easily use
+
+```
+git log --pretty=format:"%cn committed %h on %cd"
+```
+or similar options.
 
 ## License
 
