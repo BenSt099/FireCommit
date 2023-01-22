@@ -128,40 +128,54 @@ def Topic(inputMsgType):
 
     if(inputMsgType == "oa"):
         print()
-        print("""
-        Possible 📋 TOPICS:
+        w = PrettyTable()
+        w.field_names = ["(1)","(2)","(3)","(4)"]
 
-        | GUI: 🖼️ (g)       | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)  |
-        | INITIAL: 🏹 (ii)  | UPDATE: ⬆️ (u)               | TEST: 🛡️ (t)            | FIX: ✅ (fi)           |
-        | MILESTONE: 💎 (m) | RELEASE: 🎆 (r)              | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) |
-        | DOCKER: 🐳 (do)   | SPRING: 🌿 (sp)              | GRADLE: 🐘 (gr)         |
-        """)
+        w.add_rows([
+            ["GUI: 🖼️ (g)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
+            ["INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)","TEST: 🛡️ (t)","FIX: ✅ (fi)"],
+            ["MILESTONE: 💎 (m)","RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)","INFRASTRUCTURE: 🎛️ (i)"],
+            ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘 (gr)",""],
+        ])
+
+        w.set_style(PLAIN_COLUMNS)
+        print("Possible 📋 TOPICS: \n")
+        print(w)
         dictPossibilitiesTopics = dictPossibilitiesOnionArch.copy()
 
     elif(inputMsgType == "la"):
         print()
-        print("""
-        Possible 📋 TOPICS:
+        z = PrettyTable()
+        z.field_names = ["(1)","(2)","(3)","(4)"]
+
+        z.add_rows([
+            ["GUI: 🖼️ (g)","BUSINESS_LOGIC: ♟️ (bl)","PERSISTENCE: 🧱 (p)","INITIAL: 🏹 (ii)"],
+            ["UPDATE: ⬆️ (u)","TEST: 🛡️ (t)","FIX: ✅ (fi)","MILESTONE: 💎 (m)"],
+            ["RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)","INFRASTRUCTURE: 🎛️ (i)","DOCKER: 🐳 (do)"],
+            ["SPRING: 🌿 (sp)","GRADLE: 🐘","",""]
+        ])
         
-        | GUI: 🖼️ (g)     | BUSINESS_LOGIC: ♟️ (bl) | PERSISTENCE: 🧱 (p)    | INITIAL: 🏹 (ii)  |
-        | UPDATE: ⬆️ (u)  | TEST: 🛡️ (t)            | FIX: ✅ (fi)           | MILESTONE: 💎 (m) |
-        | RELEASE: 🎆 (r) | DOCUMENTATION: 📓 (d)   | INFRASTRUCTURE: 🎛️ (i) | DOCKER: 🐳 (do)   | 
-        | SPRING: 🌿 (sp) | GRADLE: 🐘              |
-        """)
+        z.set_style(PLAIN_COLUMNS)
+        print("Possible 📋 TOPICS: \n")
+        print(z)
         dictPossibilitiesTopics = dictPossibilitiesLayeredArch.copy()
 
     else:
         print()
-        print("""
-        Possible 📋 TOPICS:
-
-        | FIX: ✅ (fi)         | WARNING: ⚠️ (w)              | FAILED: ❌ (f)          | CONTINUOUS_DELIVERY: ♾️ (cd) |
-        | TEST: 🛡️ (t)         | MILESTONE: 💎 (m)            | RELEASE: 🎆 (r)         | DOCUMENTATION: 📓 (d)        |
-        | LINK: 🔗 (l)         | REFACTORING: 🔪 (rf)         | GUI: 🖼️ (g)             | BUSINESS_LOGIC: ♟️ (bl)      |
-        | ARCHITECTURE: 🏬 (a) | INFRASTRUCTURE: 🎛️ (i)       | INITIAL: 🏹 (ii)        | UPDATE: ⬆️ (u)               |
-        | PERSISTENCE: 🧱 (p)  | APPLICATION_SERVICE: 💾 (as) | DOMAIN_SERVICE: 🪛 (ds) | DOMAIN_MODEL: 🥝 (dm)        |
-        | DOCKER: 🐳 (do)      | SPRING: 🌿 (sp)              | GRADLE: 🐘              | 
-        """)
+        y = PrettyTable()
+        y.field_names = ["(1)","(2)","(3)","(4)"]
+       
+        y.add_rows([
+            ["FIX: ✅ (fi)","WARNING: ⚠️ (w)","FAILED: ❌ (f)","CONTINUOUS_DELIVERY: ♾️ (cd)"],
+            ["TEST: 🛡️ (t)","MILESTONE: 💎 (m)","RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)"],
+            ["LINK: 🔗 (l)","REFACTORING: 🔪 (rf)","GUI: 🖼️ (g)","BUSINESS_LOGIC: ♟️ (bl)"],
+            ["ARCHITECTURE: 🏬 (a)","INFRASTRUCTURE: 🎛️ (i)","INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)"],
+            ["PERSISTENCE: 🧱 (p)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
+            ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘",""]
+        ])
+        y.set_style(PLAIN_COLUMNS)
+        print("Possible 📋 TOPICS: \n")
+        print(y)
         dictPossibilitiesTopics = dictPossibilitiesDefault.copy()
     
     print()
