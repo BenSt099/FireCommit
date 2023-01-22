@@ -40,6 +40,8 @@ Run the following in a terminal / powershell :
 ./ FireCommitScript.py
 ```
 
+<div class="note" style="opacity:0.7;border-radius:5px;border:2px solid rgb(2,2,2);padding:15px;margin-bottom:30px;text-align:center"><p>⚠️ WARNING</p> You should run <b>git add</b> before running the script.</div>       
+
 ## Documentation
 
 - The script is mostly self-explaining.
