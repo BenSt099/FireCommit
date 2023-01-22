@@ -36,11 +36,11 @@ Next, include the file __FireCommitScript.py__ into your repo. See **Usage** for
 
 Run the following in a terminal / powershell :
 
-```
+```sh
 ./ FireCommitScript.py
 ```
 
-<div class="note" style="opacity:0.7;border-radius:5px;border:2px solid rgb(2,2,2);padding:15px;margin-bottom:30px;text-align:center"><p>⚠️ WARNING</p> You should run <b>git add</b> before running the script.</div>       
+<div class="note" style="opacity:0.7;border-radius:5px;border:2px solid rgb(2,2,2);padding:15px;margin-bottom:30px;"><p align="center">⚠️ WARNING</p> <p align="center">You should run <b>git add</b> before running the script.</p></div>       
 
 ## Documentation
 
@@ -61,7 +61,7 @@ Using `git shortlog` will not help:
 
 To search for single commits more easily use
 
-```
+```sh
 git log --pretty=format:"%cn committed %h on %cd with Topic: %f"
 ```
 or similar options.
