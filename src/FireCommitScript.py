@@ -14,6 +14,8 @@ def Branch():
     branchOfRepo = input("🔱 BRANCH: ")
     if(branchOfRepo == "d"):
         return retOS.strip()
+    if(branchOfRepo == ""):
+        return retOS.strip()    
     return branchOfRepo
 
 def Date():
