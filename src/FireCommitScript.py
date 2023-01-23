@@ -207,16 +207,15 @@ def commitToRepo(inputTopic,inputBody):
     print("Commit Message: \n")
     print(inputMsg)
     print()
+    print("""
+    Checking for unstaged commits...
+    """)
+    print(os.popen("git status").read())
+    print()
     inputStr = input(">>> Proceed [Y | N] ? ")
 
     if(inputStr == "N" or inputStr == "n"):
         exitProgram()
-
-    if(os.popen("git status").read().find("Changes not staged for commit")):
-        print("Some changes not staged for commit")
-        inputOp = input("You still want to commit [Y | N] ? ")
-        if(inputOp == "N" or inputOp == "n"):
-            exitProgram()
 
     secParam = "git commit -m \"" + inputMsg + "\""
     subprocess.run(secParam)
@@ -235,7 +234,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.4.1.0
+    🔥FireCommit - V.4.2.0
     - Options: op
     - Start:   s
     """)
