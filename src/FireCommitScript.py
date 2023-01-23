@@ -212,7 +212,7 @@ def commitToRepo(inputTopic,inputBody):
     if(inputStr == "N" or inputStr == "n"):
         exitProgram()
 
-    if(os.popen("git status").read().find("Changes not staged")):
+    if(os.popen("git status").read().find("Changes not staged for commit")):
         print("Some changes not staged for commit")
         inputOp = input("You still want to commit [Y | N] ? ")
         if(inputOp == "N" or inputOp == "n"):
@@ -235,7 +235,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.3.1.0
+    🔥FireCommit - V.4.1.0
     - Options: op
     - Start:   s
     """)
