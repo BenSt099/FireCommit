@@ -59,7 +59,7 @@ Using `git shortlog` will not help:
      alt="Bad Example of git shortlog" >
 </div>
 
-To search for single commits more easily use
+To search for single commits more easily, use
 
 ```sh
 git log --pretty=format:"%cn committed %h on %cd with Topic: %f"
