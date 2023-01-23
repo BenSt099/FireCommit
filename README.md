@@ -1,7 +1,7 @@
 # 🔥FireCommit
 
 ![](https://img.shields.io/badge/license-GNU%20Public%20v3-critical)
-![](https://img.shields.io/badge/version-v4%20--%20stable-brightgreen)
+![](https://img.shields.io/badge/version-v4.3%20--%20stable-brightgreen)
 ![](https://img.shields.io/badge/lang-87b5e0?style=flat&logo=Python)
 ![](https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git)
 ![](https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship)
@@ -12,6 +12,12 @@
 <img src="./pictures/expofcommit2.png"
      alt="Exp of generated Commit msg #2" width="230px">
 </div>
+
+## Features
+
+- The script offers an easy step-to-step protocol for generating a commit message.
+- You can directly run `git commit` and `git push` very quickly from the script.
+- If any files are unstaged, teh script warns you.
 
 ## Description
 
@@ -40,7 +46,8 @@ Run the following in a terminal / powershell :
 ./ FireCommitScript.py
 ```
 
-<div class="note" style="opacity:0.7;border-radius:5px;border:2px solid rgb(2,2,2);padding:15px;margin-bottom:30px;"><p align="center">⚠️ WARNING</p> <p align="center">You should run <b>git add</b> before running the script.</p></div>       
+<div class="note" style="opacity:0.7;border-radius:5px;border:2px solid rgb(2,2,2);padding:15px;margin-bottom:30px;"><p align="center">⚠️ WARNING</p> <p align="center">You should run <b>git add</b> before running the script.</p>
+<p align="center">The script warns you if something is unstaged.</p></div>       
 
 ## Documentation
 

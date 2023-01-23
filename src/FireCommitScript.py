@@ -222,6 +222,7 @@ def commitToRepo(inputTopic,inputBody):
     else:
         print("✅ Everything clean !")
 
+    print()
     inputStr = input(">>> Proceed [Y | N] ? ")
 
     if(inputStr == "N" or inputStr == "n"):
