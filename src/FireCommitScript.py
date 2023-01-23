@@ -14,9 +14,9 @@ def Branch():
     branchOfRepo = input("🔱 BRANCH: ")
     if(branchOfRepo == "d"):
         return retOS.strip()
-    if(branchOfRepo == ""):
-        return retOS.strip()    
-    return branchOfRepo
+    if(branchOfRepo != "" or len(branchOfRepo.strip()) == 0):
+        return branchOfRepo    
+    return retOS.strip()
 
 def Date():
     dateNow = date.today()
@@ -35,8 +35,9 @@ def Authors():
     authorS = input("👥 Author(s): ")
     if(authorS == "d"):
         return retOs.strip()
-
-    return authorS
+    if(authorS.strip() != "" or len(authorS.strip()) == 0):
+        return authorS
+    return retOs.strip()
 
 def ShortListOfChanges():
 
