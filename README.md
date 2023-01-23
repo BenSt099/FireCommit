@@ -19,7 +19,7 @@
 
 > You can directly run `git commit` and `git push` very quickly from the script.
 
-> If any files are unstaged, teh script warns you.
+> If any files are unstaged, the script warns you.
 
 ## Description
 
