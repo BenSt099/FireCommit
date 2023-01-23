@@ -15,9 +15,11 @@
 
 ## Features
 
-- The script offers an easy step-to-step protocol for generating a commit message.
-- You can directly run `git commit` and `git push` very quickly from the script.
-- If any files are unstaged, teh script warns you.
+> The script offers an easy step-to-step protocol for generating a commit message.
+
+> You can directly run `git commit` and `git push` very quickly from the script.
+
+> If any files are unstaged, teh script warns you.
 
 ## Description
 
