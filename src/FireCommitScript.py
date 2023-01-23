@@ -211,7 +211,7 @@ def commitToRepo(inputTopic,inputBody):
     print(inputMsg)
     print()
     print("""
-    Checking for unstaged commits...
+    ⚬ Checking for unstaged commits...
     """)
 
     print()
@@ -310,7 +310,7 @@ def main():
             - Description of Changes:
                     - Specify what the commit is about to do
 
-            - You still want to commit [Y | N] ?:
+            - Want to continue anyway [Y | N] ?:
                     - If there are some unstaged commits, you will 
                       receive this notification. If you you still
                       want to commit everything, type: y or Y.       
