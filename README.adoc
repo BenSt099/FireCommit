@@ -1,7 +1,7 @@
 = 🔥FireCommit
 
 image:https://img.shields.io/badge/license-GNU%20Public%20v3-critical[]
-image:https://img.shields.io/badge/version-v4.7%20--%20stable-brightgreen[]
+image:https://img.shields.io/badge/version-v4.7%20--%20unstable-brightgreen[]
 image:https://img.shields.io/badge/lang-87b5e0?style=flat&logo=Python[]
 image:https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git[]
 image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
