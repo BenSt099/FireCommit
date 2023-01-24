@@ -8,8 +8,8 @@ image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
 
 [cols="a,a", frame=none, grid=none]
 |===
-| image:pictures/expofcommit1.png["Exp of generated Commit msg #1",300,100]
-| image:pictures/expofcommit2.png["Exp of generated Commit msg #2",275,50]
+| image:pictures/expofcommit1.png["Exp of generated Commit msg #1"]
+| image:pictures/expofcommit2.png["Exp of generated Commit msg #2"]
 |===
 
 == Features
@@ -71,7 +71,7 @@ python3 FireCommitScript.py
     - The script warns you if some files are unstaged but it doesn't
       include those files into the commit. You have to manually add them to the staging area.
 
-2. Unexpected Result When Running ``Git Log``
+2. Unexpected Result When Running ``git log``
 
     - When writing a verbose commit message, a compromise must be made regarding the readability of the git log.
 

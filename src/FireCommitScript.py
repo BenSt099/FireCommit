@@ -8,7 +8,7 @@ from datetime import datetime
 
 def Branch():
     print("🔱 BRANCH")
-    returnStr = subprocess.run("git branch", capture_output=True, text=True)
+    returnStr = subprocess.run("git branch", capture_output=True, text=True,shell=True)
     print(returnStr.stdout)
     print("To use default one, type: d")
     branchOfRepo = input("🔱 BRANCH: ")
@@ -28,7 +28,7 @@ def Time():
 
 def Authors():
     print("👥 Author(s)")
-    returnStr = subprocess.run("git config user.name", capture_output=True, text=True)
+    returnStr = subprocess.run("git config user.name", capture_output=True, text=True,shell=True)
     print(returnStr.stdout)
     print("To use default one, type: d")
     authorS = input("👥 Author(s): ")
@@ -211,7 +211,7 @@ def commitToRepo(inputTopic,inputBody):
     """)
 
     print()
-    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True)
+    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
 
     try:
         returnStr.check_returncode()
@@ -241,7 +241,7 @@ def commitToRepo(inputTopic,inputBody):
     print("⚬ Trying to commit...")
     print()
     secParam = "git commit -m \"" + inputMsg + "\""
-    retCode = subprocess.run(secParam, check=True)
+    retCode = subprocess.run(secParam, check=True,shell=True)
     
     try:
         retCode.check_returncode()
@@ -258,7 +258,7 @@ def commitToRepo(inputTopic,inputBody):
 
     print("⚬ Trying to push...")
     print()
-    retCodePush = subprocess.run("git push",check=True)
+    retCodePush = subprocess.run("git push",check=True,shell=True)
 
     try:
         retCodePush.check_returncode()
@@ -275,7 +275,7 @@ def checkIfGitRepo():
     print()
     print("⚬ Checking if this is a git repository...")
     print()
-    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True)
+    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
 
     try:
         returnStr.check_returncode()
