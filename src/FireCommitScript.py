@@ -242,15 +242,19 @@ def commitToRepo(inputTopic,inputBody):
     print()
     secParam = "git commit -m \"" + inputMsg + "\""
 
-    #retCode = subprocess.run(secParam, check=True)
-    retCode = subprocess.run(secParam)
+    if sys.platform.startswith('win32'):
+        retCode = subprocess.run(secParam, check=True) # windows
+    elif sys.platform.startswith('linux'):
+        retCode = subprocess.run(secParam,shell=True,check=True) # linux
+    elif sys.platform.startswith('darwin'):
+        retCode = subprocess.run(secParam,shell=True,check=True)
 
-    #try:
-    #    retCode.check_returncode()
-    #except subprocess.CalledProcessError: 
-    #    print("❌ Commit - Failure !")
-    #    time.sleep(10)
-    #    exitProgram()
+    try:
+        retCode.check_returncode()
+    except subprocess.CalledProcessError: 
+        print("❌ Commit - Failure !")
+        time.sleep(10)
+        exitProgram()
 
     print("✅ Commit - Successful !")    
     print()
