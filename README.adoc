@@ -8,7 +8,7 @@ image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
 
 
 image:pictures/expofcommit1.png["Exp of generated Commit msg #1",250,250,align="center"]
-image:pictures/expofcommit2.png["Exp of generated Commit msg #2",250,250,align="center"]
+image:pictures/expofcommit2.png["Exp of generated Commit msg #2",align="center"]
 
 
 == Features
