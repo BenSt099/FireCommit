@@ -298,7 +298,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.4.6.0
+    🔥FireCommit - V.4.7.0
     - Options: op
     - Start:   s
     """)
