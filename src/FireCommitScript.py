@@ -233,7 +233,7 @@ def commitToRepo(inputTopic,inputBody):
     print()
     secParam = "git commit -m \"" + inputMsg + "\""
     retCode = subprocess.run(secParam)
-    if(retCode != 0):
+    if(retCode.check_returncode() != True):
         print("❌ Commit - Failure !")
         time.sleep(5)
         exitProgram()
@@ -249,7 +249,7 @@ def commitToRepo(inputTopic,inputBody):
     print("⚬ Trying to push...")
     print()
     retCodePush = subprocess.run("git push")
-    if(retCodePush != 0):
+    if(retCodePush.check_returncode() != True):
         print("❌ Pushing - Failure !")
         time.sleep(5)
         exitProgram()
