@@ -211,7 +211,16 @@ def commitToRepo(inputTopic,inputBody):
     """)
 
     print()
-    returnStr = subprocess.run("git status", capture_output=True, text=True)
+    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True)
+
+    try:
+        returnStr.check_returncode()
+    except subprocess.CalledProcessError: 
+        print("❌ Checking for unstaged commits failed !")
+        print()
+        print("⚠️ Committing might not work.")
+        print()
+
     
     if(returnStr.stdout.find("Changes not staged") != -1):
         print("❌ Found Unstaged Commits !")
@@ -232,15 +241,16 @@ def commitToRepo(inputTopic,inputBody):
     print("⚬ Trying to commit...")
     print()
     secParam = "git commit -m \"" + inputMsg + "\""
-    retCode = subprocess.run(secParam)
-    if(retCode.check_returncode() != True):
+    retCode = subprocess.run(secParam, check=True)
+    
+    try:
+        retCode.check_returncode()
+    except subprocess.CalledProcessError: 
         print("❌ Commit - Failure !")
         time.sleep(5)
         exitProgram()
 
-    else:
-        print("✅ Commit - Successful !")    
-
+    print("✅ Commit - Successful !")    
     print()
     runGitPush = input(">>> Run Git Push [Y | N] ? ")
     if(runGitPush == "N" or runGitPush == "n"):
@@ -248,14 +258,16 @@ def commitToRepo(inputTopic,inputBody):
 
     print("⚬ Trying to push...")
     print()
-    retCodePush = subprocess.run("git push")
-    if(retCodePush.check_returncode() != True):
+    retCodePush = subprocess.run("git push",check=True)
+
+    try:
+        retCodePush.check_returncode()
+    except subprocess.CalledProcessError: 
         print("❌ Pushing - Failure !")
         time.sleep(5)
         exitProgram()
 
-    else:
-        print("✅ Pushing - Successful !")
+    print("✅ Pushing - Successful !")
 
 
 
@@ -263,15 +275,19 @@ def checkIfGitRepo():
     print()
     print("⚬ Checking if this is a git repository...")
     print()
-    returnStr = subprocess.run("git status", capture_output=True, text=True)
+    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True)
 
-    if(returnStr.returncode == 0):
-        print("✅ Everything ok !")
-        print()
-    else:
+    try:
+        returnStr.check_returncode()
+    except subprocess.CalledProcessError: 
         print("❌ This is not a git repository !")
         time.sleep(5)
         exitProgram()
+
+    print("✅ Everything ok !")
+    print()
+
+        
 
 def exitProgram():
     print("""
