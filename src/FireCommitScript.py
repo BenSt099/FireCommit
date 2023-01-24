@@ -1,5 +1,5 @@
-import os
 import sys
+import time
 import subprocess
 from prettytable import PrettyTable
 from prettytable import PLAIN_COLUMNS
@@ -8,15 +8,15 @@ from datetime import datetime
 
 def Branch():
     print("🔱 BRANCH")
-    print(os.popen("git branch").read())
-    retOS = os.popen("git branch").read()
+    returnStr = subprocess.run("git branch", capture_output=True, text=True)
+    print(returnStr.stdout)
     print("To use default one, type: d")
     branchOfRepo = input("🔱 BRANCH: ")
     if(branchOfRepo == "d"):
-        return retOS.strip()
+        return returnStr.stdout.strip()
     if(branchOfRepo != "" or len(branchOfRepo.strip()) == 0):
-        return branchOfRepo    
-    return retOS.strip()
+        return "-"    
+    return returnStr.stdout.strip()
 
 def Date():
     dateNow = date.today()
@@ -27,20 +27,18 @@ def Time():
     return timeNow.strftime("%H:%M:%S")
 
 def Authors():
-
     print("👥 Author(s)")
-    print(os.popen("git config user.name").read())
-    retOs = os.popen("git config user.name").read()
+    returnStr = subprocess.run("git config user.name", capture_output=True, text=True)
+    print(returnStr.stdout)
     print("To use default one, type: d")
     authorS = input("👥 Author(s): ")
     if(authorS == "d"):
-        return retOs.strip()
+        return returnStr.stdout.strip()
     if(authorS.strip() != "" or len(authorS.strip()) == 0):
-        return authorS
-    return retOs.strip()
+        return "-"
+    return returnStr.stdout.strip()
 
 def ShortListOfChanges():
-
     listOfChanges = "🗒️ DESCRIPTION OF CHANGES: \n\n"
     print("🗒️ DESCRIPTION OF CHANGES: ")
     print("If you're done, type: r")
@@ -67,7 +65,6 @@ def Keywords():
     return keywords    
 
 def Topic(inputMsgType):  
-
     dictPossibilitiesOnionArch = {
         'g': 'GUI: 🖼️',
        'as': 'APPLICATION_SERVICE: 💾',
@@ -187,7 +184,6 @@ def Topic(inputMsgType):
 
 
 def startWithMsg():
-
     x = PrettyTable()
     x.field_names = ["Content","Description"]
 
@@ -215,7 +211,9 @@ def commitToRepo(inputTopic,inputBody):
     """)
 
     print()
-    if(os.popen("git status").read().find("Changes not staged for commit") != -1):
+    returnStr = subprocess.run("git status", capture_output=True, text=True)
+    
+    if(returnStr.stdout.find("Changes not staged") != -1):
         print("❌ Found Unstaged Commits !")
         print()
         wanttocontinue = input(">>> Want to continue anyway [Y | N] ? ")
@@ -239,6 +237,21 @@ def commitToRepo(inputTopic,inputBody):
         exitProgram()
     subprocess.run("git push")
 
+
+def checkIfGitRepo():
+    print()
+    print("⚬ Checking if this is a git repository...")
+    print()
+    returnStr = subprocess.run("git status", capture_output=True, text=True)
+
+    if(returnStr.returncode == 0):
+        print("✅ Everything ok !")
+        print()
+    else:
+        print("❌ This is not a git repository !")
+        time.sleep(5)
+        exitProgram()
+
 def exitProgram():
     print("""
         - Stopping...
@@ -248,11 +261,12 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.4.4.0
+    🔥FireCommit - V.4.5.0
     - Options: op
     - Start:   s
     """)
-    
+
+    checkIfGitRepo()
     inputAction = input("Action: ")
 
     if(inputAction == "s"):
