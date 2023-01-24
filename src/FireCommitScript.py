@@ -302,7 +302,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.4.8.0
+    🔥FireCommit - V.4.9.0
     - Options: op
     - Start:   s
     """)
