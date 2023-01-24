@@ -244,12 +244,12 @@ def commitToRepo(inputTopic,inputBody):
     retCode = subprocess.Popen(['git','commit','-m', secParam], shell=True)
     
 
-    try:
-        retCode.check_returncode()
-    except subprocess.CalledProcessError: 
-        print("❌ Commit - Failure !")
-        time.sleep(10)
-        exitProgram()
+    #try:
+    #    retCode.check_returncode()
+    #except subprocess.CalledProcessError: 
+    #    print("❌ Commit - Failure !")
+    #    time.sleep(10)
+    #    exitProgram()
 
     print("✅ Commit - Successful !")    
     print()
