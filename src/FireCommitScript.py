@@ -241,7 +241,7 @@ def commitToRepo(inputTopic,inputBody):
     print("⚬ Trying to commit...")
     print()
     secParam = '\"' + inputMsg + '\"'
-    retCode = subprocess.run(['git','commit','-m', secParam], check=True,shell=True)
+    retCode = subprocess.Popen(['git','commit','-m', secParam], shell=True)
     
 
     try:
