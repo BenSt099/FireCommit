@@ -243,8 +243,6 @@ def commitToRepo(inputTopic,inputBody):
     secParam = "git commit -m \"" + inputMsg + "\""
     retCode = subprocess.run(secParam, check=True)
     
-    
-
     try:
         retCode.check_returncode()
     except subprocess.CalledProcessError: 
@@ -300,7 +298,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.4.7.0
+    🔥FireCommit - V.4.8.0
     - Options: op
     - Start:   s
     """)
