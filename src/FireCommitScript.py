@@ -229,13 +229,34 @@ def commitToRepo(inputTopic,inputBody):
     if(inputStr == "N" or inputStr == "n"):
         exitProgram()
 
+    print("⚬ Trying to commit...")
+    print()
     secParam = "git commit -m \"" + inputMsg + "\""
-    subprocess.run(secParam)
+    retCode = subprocess.run(secParam)
+    if(retCode != 0):
+        print("❌ Commit - Failure !")
+        time.sleep(5)
+        exitProgram()
+
+    else:
+        print("✅ Commit - Successful !")    
+
     print()
     runGitPush = input(">>> Run Git Push [Y | N] ? ")
     if(runGitPush == "N" or runGitPush == "n"):
         exitProgram()
-    subprocess.run("git push")
+
+    print("⚬ Trying to push...")
+    print()
+    retCodePush = subprocess.run("git push")
+    if(retCodePush != 0):
+        print("❌ Pushing - Failure !")
+        time.sleep(5)
+        exitProgram()
+
+    else:
+        print("✅ Pushing - Successful !")
+
 
 
 def checkIfGitRepo():
@@ -255,13 +276,13 @@ def checkIfGitRepo():
 def exitProgram():
     print("""
         - Stopping...
-        - FireCommit Exited
+        - 🔥FireCommit Exited
         """)
     sys.exit()
 
 def main():
     print("""
-    🔥FireCommit - V.4.5.0
+    🔥FireCommit - V.4.6.0
     - Options: op
     - Start:   s
     """)
@@ -272,9 +293,9 @@ def main():
     if(inputAction == "s"):
         print()
         print("""
-        | Layered-Architecture  (la) | 
-        | Onion-Architecture    (oa) | 
-        | Custom                 (c) |
+        | for Layered-Architecture  (la) | 
+        | for Onion-Architecture    (oa) | 
+        | Custom                     (c) |
         """)
         print()
         commitmsg = input("Type of Commit-Msg: ")
