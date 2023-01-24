@@ -243,8 +243,7 @@ def commitToRepo(inputTopic,inputBody):
     secParam = "git commit -m \"" + inputMsg + "\""
 
     #retCode = subprocess.run(secParam, check=True)
-    
-    subprocess.call(secParam,shell=True)
+    retCode = subprocess.run(secParam)
 
     #try:
     #    retCode.check_returncode()
