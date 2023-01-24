@@ -241,6 +241,9 @@ def commitToRepo(inputTopic,inputBody):
     print("⚬ Trying to commit...")
     print()
     secParam = '\"' + inputMsg + '\"'
+    print()
+    print("Test:")
+    print(secParam)
     process = subprocess.call(['git','commit','-m', secParam], shell=True)
     
 
