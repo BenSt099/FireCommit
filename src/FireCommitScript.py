@@ -240,17 +240,17 @@ def commitToRepo(inputTopic,inputBody):
 
     print("⚬ Trying to commit...")
     print()
-    secParam = "\"" + inputMsg + "\""
+    secParam = "git commit -m \"" + inputMsg + "\""
+    retCode = subprocess.run(secParam, check=True)
     
-    process = subprocess.call(["git","commit","-m", secParam], shell=True)
     
 
-    #try:
-    #    retCode.check_returncode()
-    #except subprocess.CalledProcessError: 
-    #    print("❌ Commit - Failure !")
-    #    time.sleep(10)
-    #    exitProgram()
+    try:
+        retCode.check_returncode()
+    except subprocess.CalledProcessError: 
+        print("❌ Commit - Failure !")
+        time.sleep(10)
+        exitProgram()
 
     print("✅ Commit - Successful !")    
     print()
