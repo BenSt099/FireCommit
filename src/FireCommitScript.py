@@ -57,7 +57,7 @@ def Changes():
         'm': 'MODULE: 🗃️',
        'sm': 'SUBMODULE: 🗄️'
     }
-    ch = input("🛠️ Changes (LOCAL (l): 📌, GLOBAL (g): 🌐, MODULE (m): 🗃️, SUBMODULE (sm): 🗄️): ")
+    ch = input("🛠️ Scope (LOCAL (l): 📌, GLOBAL (g): 🌐, MODULE (m): 🗃️, SUBMODULE (sm): 🗄️): ")
     return dictPossibilitiesChanges.get(ch,"GLOBAL: 🌐")
 
 def Keywords():
@@ -190,7 +190,7 @@ def startWithMsg():
     x.add_rows([
              ["👥 AUTHORS",Authors()],
              ["🔑⌨️ KEYWORDS",Keywords()],
-             ["🛠️ CHANGES",Changes()],
+             ["🛠️ SCOPE",Changes()],
              ["🔱 BRANCH",Branch()],
              ["🗓️ DATE",Date()],
              ["🕒 TIME",Time()]])
