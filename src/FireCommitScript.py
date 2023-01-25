@@ -55,9 +55,10 @@ def Changes():
         'l': 'LOCAL: 📌',
         'g': 'GLOBAL: 🌐',
         'm': 'MODULE: 🗃️',
-       'sm': 'SUBMODULE: 🗄️'
+       'sm': 'SUBMODULE: 🗄️',
+        'r': 'ROOT: 🌳'
     }
-    ch = input("🛠️ Scope (LOCAL (l): 📌, GLOBAL (g): 🌐, MODULE (m): 🗃️, SUBMODULE (sm): 🗄️): ")
+    ch = input("🛠️ SCOPE (LOCAL (l): 📌, GLOBAL (g): 🌐, MODULE (m): 🗃️, SUBMODULE (sm): 🗄️, ROOT (r): 🌳): ")
     return dictPossibilitiesChanges.get(ch,"GLOBAL: 🌐")
 
 def Keywords():
@@ -123,7 +124,11 @@ def Topic(inputMsgType):
        'u' : 'UPDATE: ⬆️',
        'do': 'DOCKER: 🐳',
        'sp': 'SPRING: 🌿',
-       'gr': 'GRADLE: 🐘'
+       'gr': 'GRADLE: 🐘',
+       'st': 'STYLE: 🪟',
+       'fe': 'FEATURE: 🎉',
+       'pe': 'PERFORMANCE: 💯',
+       'co': 'CORE: 🌣'
     }
 
     if(inputMsgType == "oa"):
@@ -171,7 +176,8 @@ def Topic(inputMsgType):
             ["LINK: 🔗 (l)","REFACTORING: 🔪 (rf)","GUI: 🖼️ (g)","BUSINESS_LOGIC: ♟️ (bl)"],
             ["ARCHITECTURE: 🏬 (a)","INFRASTRUCTURE: 🎛️ (i)","INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)"],
             ["PERSISTENCE: 🧱 (p)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
-            ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘",""]
+            ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘","STYLE: 🪟 (st)"],
+            ["FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)","CORE: 🌣 (co)",""]
         ])
         y.set_style(PLAIN_COLUMNS)
         print("Possible 📋 TOPICS: \n")
@@ -302,7 +308,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.4.9.0
+    🔥FireCommit - V.4.9.1
     - Options: op
     - Start:   s
     """)
