@@ -65,43 +65,9 @@ def Keywords():
     keywords = input("🔑⌨️ Keyword(s): ")
     return keywords    
 
-def Topic(inputMsgType):  
-    dictPossibilitiesOnionArch = {
-        'g': 'GUI: 🖼️',
-       'as': 'APPLICATION_SERVICE: 💾',
-       'ds': 'DOMAIN_SERVICE: 🪛',
-       'dm': 'DOMAIN_MODEL: 🥝',
-       'ii': 'INITIAL: 🏹',
-        'u': 'UPDATE: ⬆️',
-        't': 'TEST: 🛡️',
-       'fi': 'FIX: ✅',
-        'm': 'MILESTONE: 💎',
-        'r': 'RELEASE: 🎆',
-        'd': 'DOCUMENTATION: 📓',
-        'i': 'INFRASTRUCTURE: 🎛️',
-       'do': 'DOCKER: 🐳',
-       'sp': 'SPRING: 🌿',
-       'gr': 'GRADLE: 🐘'
-    }
-
-    dictPossibilitiesLayeredArch = {
-        'g': 'GUI: 🖼️',
-       'bl': 'BUSINESS_LOGIC: ♟️',
-        'p': 'PERSISTENCE: 🧱',
-       'ii': 'INITIAL: 🏹',
-        'u': 'UPDATE: ⬆️',
-        't': 'TEST: 🛡️',
-       'fi': 'FIX: ✅',
-        'm': 'MILESTONE: 💎',
-        'r': 'RELEASE: 🎆',
-        'd': 'DOCUMENTATION: 📓',
-        'i': 'INFRASTRUCTURE: 🎛️',
-       'do': 'DOCKER: 🐳',
-       'sp': 'SPRING: 🌿',
-       'gr': 'GRADLE: 🐘'
-    }
-
-    dictPossibilitiesDefault = {
+def Topic():  
+    
+    dictPossibilitiesTopics = {
        'fi': 'FIX: ✅',
         'w': 'WARNING: ⚠️',
         'f': 'FAILED: ❌',
@@ -131,59 +97,22 @@ def Topic(inputMsgType):
        'co': 'CORE: 🌣'
     }
 
-    if(inputMsgType == "oa"):
-        print()
-        w = PrettyTable()
-        w.field_names = ["(1)","(2)","(3)","(4)"]
-
-        w.add_rows([
-            ["GUI: 🖼️ (g)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
-            ["INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)","TEST: 🛡️ (t)","FIX: ✅ (fi)"],
-            ["MILESTONE: 💎 (m)","RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)","INFRASTRUCTURE: 🎛️ (i)"],
-            ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘 (gr)",""],
-        ])
-
-        w.set_style(PLAIN_COLUMNS)
-        print("Possible 📋 TOPICS: \n")
-        print(w)
-        dictPossibilitiesTopics = dictPossibilitiesOnionArch.copy()
-
-    elif(inputMsgType == "la"):
-        print()
-        z = PrettyTable()
-        z.field_names = ["(1)","(2)","(3)","(4)"]
-
-        z.add_rows([
-            ["GUI: 🖼️ (g)","BUSINESS_LOGIC: ♟️ (bl)","PERSISTENCE: 🧱 (p)","INITIAL: 🏹 (ii)"],
-            ["UPDATE: ⬆️ (u)","TEST: 🛡️ (t)","FIX: ✅ (fi)","MILESTONE: 💎 (m)"],
-            ["RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)","INFRASTRUCTURE: 🎛️ (i)","DOCKER: 🐳 (do)"],
-            ["SPRING: 🌿 (sp)","GRADLE: 🐘","",""]
-        ])
-        
-        z.set_style(PLAIN_COLUMNS)
-        print("Possible 📋 TOPICS: \n")
-        print(z)
-        dictPossibilitiesTopics = dictPossibilitiesLayeredArch.copy()
-
-    else:
-        print()
-        y = PrettyTable()
-        y.field_names = ["(1)","(2)","(3)","(4)"]
-       
-        y.add_rows([
-            ["FIX: ✅ (fi)","WARNING: ⚠️ (w)","FAILED: ❌ (f)","CONTINUOUS_DELIVERY: ♾️ (cd)"],
-            ["TEST: 🛡️ (t)","MILESTONE: 💎 (m)","RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)"],
-            ["LINK: 🔗 (l)","REFACTORING: 🔪 (rf)","GUI: 🖼️ (g)","BUSINESS_LOGIC: ♟️ (bl)"],
-            ["ARCHITECTURE: 🏬 (a)","INFRASTRUCTURE: 🎛️ (i)","INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)"],
-            ["PERSISTENCE: 🧱 (p)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
-            ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘","STYLE: 🪟 (st)"],
-            ["FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)","CORE: 🌣 (co)",""]
-        ])
-        y.set_style(PLAIN_COLUMNS)
-        print("Possible 📋 TOPICS: \n")
-        print(y)
-        dictPossibilitiesTopics = dictPossibilitiesDefault.copy()
+    print()
+    y = PrettyTable()
+    y.field_names = ["(1)","(2)","(3)","(4)"]
     
+    y.add_rows([
+        ["FIX: ✅ (fi)","WARNING: ⚠️ (w)","FAILED: ❌ (f)","CONTINUOUS_DELIVERY: ♾️ (cd)"],
+        ["TEST: 🛡️ (t)","MILESTONE: 💎 (m)","RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)"],
+        ["LINK: 🔗 (l)","REFACTORING: 🔪 (rf)","GUI: 🖼️ (g)","BUSINESS_LOGIC: ♟️ (bl)"],
+        ["ARCHITECTURE: 🏬 (a)","INFRASTRUCTURE: 🎛️ (i)","INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)"],
+        ["PERSISTENCE: 🧱 (p)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
+        ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘","STYLE: 🪟 (st)"],
+        ["FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)","CORE: 🌣 (co)",""]
+    ])
+    y.set_style(PLAIN_COLUMNS)
+    print("Possible 📋 TOPICS: \n")
+    print(y)
     print()
     top = input("📋 TOPIC: ")
     return dictPossibilitiesTopics.get(top,"UPDATE: ⬆️")  
@@ -318,14 +247,8 @@ def main():
 
     if(inputAction == "s"):
         print()
-        print("""
-        | for Layered-Architecture  (la) | 
-        | for Onion-Architecture    (oa) | 
-        | Custom                     (c) |
-        """)
-        print()
-        commitmsg = input("Type of Commit-Msg: ")
-        commitToRepo(Topic(commitmsg),startWithMsg())
+        
+        commitToRepo(Topic(),startWithMsg())
         exitProgram()
         
     elif(inputAction == "op"):    
