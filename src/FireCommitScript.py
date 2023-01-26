@@ -132,7 +132,7 @@ def Topic():
 def startWithMsg():
     x = PrettyTable()
     x.set_style(PLAIN_COLUMNS)
-    x.field_names = ["  Description","Content"]
+    x.field_names = ["  Description"," Content"]
 
     x.add_rows([
              ["👥 AUTHORS",Authors()],

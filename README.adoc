@@ -7,7 +7,7 @@ image:https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git[]
 image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
 
 [.text-center]
-image::pictures/expofcommit2.png["Exp of generated Commit msg",align="center"]
+image::pictures/expofcommit.png["Exp of generated Commit msg",align="center"]
 
 
 == Features
