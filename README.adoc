@@ -60,7 +60,7 @@ python3 FireCommitScript.py
 
 - The script is mostly self-explaining and guides you through every step
 - If you still need some help, type "op" when the script starts.
-- In future releases, a docs-file will be included into this repo.
+- For the full documentation, click https://github.com/BenSt099/FireCommit/blob/main/docs/docs.adoc[here].
 
 == Known Issues
 
