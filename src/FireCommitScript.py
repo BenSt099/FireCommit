@@ -313,12 +313,7 @@ def main():
                       located
 
             - Description of Changes:
-                    - Specify what the commit is about to do
-
-            - Want to continue anyway [Y | N] ?:
-                    - If there are some unstaged commits, you will 
-                      receive this notification. If you you still
-                      want to commit everything, type: y or Y.       
+                    - Specify what the commit is about to do     
         """)
         main()
     else:
