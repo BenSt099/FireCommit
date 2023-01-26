@@ -52,14 +52,25 @@ def ShortListOfChanges():
 
 def Changes():
     dictPossibilitiesChanges = {
-        'l': 'LOCAL: 📌',
-        'g': 'GLOBAL: 🌐',
-        'm': 'MODULE: 🗃️',
-       'sm': 'SUBMODULE: 🗄️',
-        'r': 'ROOT: 🌳'
+        'l': 'LOCAL (📌)',
+        'g': 'GLOBAL (🌐)',
+        'm': 'MODULE (🗃️)',
+       'sm': 'SUBMODULE (🗄️)',
+        'r': 'ROOT (🌳)'
     }
-    ch = input("🛠️ SCOPE (LOCAL (l): 📌, GLOBAL (g): 🌐, MODULE (m): 🗃️, SUBMODULE (sm): 🗄️, ROOT (r): 🌳): ")
-    return dictPossibilitiesChanges.get(ch,"GLOBAL: 🌐")
+    v = PrettyTable()
+    v.field_names = ["(1)","(2)"]
+    v.add_rows([
+        ["LOCAL (l) 📌","GLOBAL (g) 🌐"],
+        ["MODULE (m) 🗃️","SUBMODULE (sm) 🗄️"],
+        ["ROOT (r) 🌳",""],
+    ])
+    v.set_style(PLAIN_COLUMNS)
+    print("Possible 📋 Scope: \n")
+    print(v)
+    print()
+    ch = input("🛠️ SCOPE: ")
+    return dictPossibilitiesChanges.get(ch,"GLOBAL (🌐)")
 
 def Keywords():
     keywords = input("🔑⌨️ Keyword(s): ")
@@ -94,7 +105,8 @@ def Topic():
        'st': 'STYLE: 🪟',
        'fe': 'FEATURE: 🎉',
        'pe': 'PERFORMANCE: 💯',
-       'co': 'CORE: 🌣'
+       'co': 'CORE: 🌣',
+       're': 'REVERT: ♻️'
     }
 
     print()
@@ -108,19 +120,19 @@ def Topic():
         ["ARCHITECTURE: 🏬 (a)","INFRASTRUCTURE: 🎛️ (i)","INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)"],
         ["PERSISTENCE: 🧱 (p)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
         ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘","STYLE: 🪟 (st)"],
-        ["FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)","CORE: 🌣 (co)",""]
+        ["FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)","CORE: 🌣 (co)","REVERT: ♻️ (re)"]
     ])
     y.set_style(PLAIN_COLUMNS)
-    print("Possible 📋 TOPICS: \n")
+    print("Possible 📋 TYPES: \n")
     print(y)
     print()
-    top = input("📋 TOPIC: ")
+    top = input("📋 TYPE: ")
     return dictPossibilitiesTopics.get(top,"UPDATE: ⬆️")  
-
 
 def startWithMsg():
     x = PrettyTable()
-    x.field_names = ["Content","Description"]
+    x.set_style(PLAIN_COLUMNS)
+    x.field_names = ["  Description","Content"]
 
     x.add_rows([
              ["👥 AUTHORS",Authors()],
@@ -129,7 +141,6 @@ def startWithMsg():
              ["🔱 BRANCH",Branch()],
              ["🗓️ DATE",Date()],
              ["🕒 TIME",Time()]])
-    x.set_style(PLAIN_COLUMNS)
 
     return x.get_string()
 
@@ -210,8 +221,6 @@ def commitToRepo(inputTopic,inputBody):
 
     print("✅ Pushing - Successful !")
 
-
-
 def checkIfGitRepo():
     print()
     print("⚬ Checking if this is a git repository...")
@@ -237,7 +246,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.4.9.1
+    🔥FireCommit - V.5
     - Options: op
     - Start:   s
     """)
@@ -259,12 +268,7 @@ def main():
                     - op: display options
                     - <Enter> quit script
 
-            - Type of Commit-Msg:
-                    - Commit Msg for Layered Architecture
-                    - Commit Msg for Onion Architecture
-                    - Assemble a custom commit message
-
-            - Topics: 
+            - Type: 
                     - Select a basic topic for the commit
                     - If you can't put it into one word, 
                       your probably take to many steps in
