@@ -74,7 +74,7 @@ def Changes():
     v.set_style(PLAIN_COLUMNS)
     print()
     print("__________________________________")
-    print("Possible 📋 Scope: \n")
+    print("Possible 🛠️ Scope: \n")
     print(v)
     print()
     ch = input("🛠️ SCOPE: ")
@@ -183,10 +183,6 @@ def commitToRepo(inputTopic,inputBody):
     if(returnStr.stdout.find("Changes not staged") != -1):
         print("❌ Found Unstaged Commits !")
         print()
-        wanttocontinue = input(">>> Want to continue anyway [Y | N] ? ")
-        if(wanttocontinue == "N" or wanttocontinue=="n"):
-            exitProgram()
-
     else:
         print("✅ Everything clean !")
 

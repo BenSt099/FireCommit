@@ -1,0 +1,120 @@
+= Documentation of 🔥FireCommit
+
+== General Recommendations
+
+    > It doesn't matter if you type `N` or `n` when you're asked to proceed (when committing) or push.
+
+== Start
+
+When the scrip start, you see something similar to this:
+
+[source,shell]
+--
+🔥FireCommit - V.x.y
+    - Options: op
+    - Start:   s
+
+Action:    
+--
+
+To see possible options / help, type `op`. If you want to generate a git commit message, just type: `s`.
+
+== Selecting: Topic
+
+Select a topic for your commit. Type the small letter that is displayed right next to the topic, e.g. `FIX` -> `fi`. Default Type is __Update__.
+
+[source,shell]
+--
+Possible 📋 TYPES:
+
+  (1)                   (2)                (3)
+FIX: ✅ (fi)     WARNING: ⚠️ (w)      FAILED: ❌ ...
+
+📋 TYPE: 
+--
+
+== Selecting: Author(s)
+
+You can select one or mulptiple users. The default user can be selected with `d`. The default user can be displayed when running:
+`git config user.name`.
+
+[source,shell]
+--
+👥 Author(s)
+Default: <DefaultAuthor>
+
+To use default one, type: d
+👥 Author(s): 
+--
+
+== Selecting: Keyword(s)
+
+Pass one or multiple keywords (short / oneliner): 
+
+[source,shell]
+--
+🔑⌨️ Keyword(s): 
+--
+
+== Selecting: Scope
+
+Select a scope for your project by typing the abbreviation next to the emoji. Default scope is __global__.
+
+[source,shell]
+--
+Possible 🛠️ Scope:
+
+    (1)               (2)
+LOCAL (l) 📌    GLOBAL (g) 🌐
+ROOT (r) 🌳
+
+🛠️ SCOPE: 
+--
+
+== Selecting: Branch
+
+Select the branch you want to commit to. The default one can be displayed when typing `git branch`. Use `d` to select __<DefaultBranch>__.
+
+
+[source,shell]
+--
+🔱 BRANCH
+Default: <DefaultBranch>
+
+To use default one, type: d
+🔱 BRANCH: 
+--
+
+== Checking & Commits
+
+If there are unstaged commits, you will see something like:
+
+[source,shell]
+--
+❌ Found Unstaged Commits !
+--
+
+Otherwise, you will see:
+
+[source,shell]
+--
+✅ Everything clean !
+--
+
+Next, the script asks you if you wish to commit. Proceed with `y` / `Y` or `n` / `N`:
+
+[source,shell]
+--
+>>> Proceed [Y | N] ? 
+--
+
+== Final Push
+
+Now, the commit is done. Finally, you can choose if you want to push the commit or not (`y` / `Y` or `n` / `N`):
+
+[source,shell]
+--
+>>> Run Git Push [Y | N] ?     
+--
+
+After this descision the script terminates.
