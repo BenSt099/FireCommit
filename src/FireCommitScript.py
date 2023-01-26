@@ -7,9 +7,11 @@ from datetime import date
 from datetime import datetime
 
 def Branch():
+    print()
+    print("__________________________________")
     print("🔱 BRANCH")
     returnStr = subprocess.run("git branch", capture_output=True, text=True,shell=True)
-    print(returnStr.stdout)
+    print("Default: " + returnStr.stdout)
     print("To use default one, type: d")
     branchOfRepo = input("🔱 BRANCH: ")
     if(branchOfRepo == "d"):
@@ -27,9 +29,11 @@ def Time():
     return timeNow.strftime("%H:%M:%S")
 
 def Authors():
+    print()
+    print("__________________________________")
     print("👥 Author(s)")
     returnStr = subprocess.run("git config user.name", capture_output=True, text=True,shell=True)
-    print(returnStr.stdout)
+    print("Default: " + returnStr.stdout)
     print("To use default one, type: d")
     authorS = input("👥 Author(s): ")
     if(authorS == "d"):
@@ -39,6 +43,8 @@ def Authors():
     return returnStr.stdout.strip()
 
 def ShortListOfChanges():
+    print()
+    print("__________________________________")
     listOfChanges = "🗒️ DESCRIPTION OF CHANGES: \n\n"
     print("🗒️ DESCRIPTION OF CHANGES: ")
     print("If you're done, type: r")
@@ -66,6 +72,8 @@ def Changes():
         ["ROOT (r) 🌳",""],
     ])
     v.set_style(PLAIN_COLUMNS)
+    print()
+    print("__________________________________")
     print("Possible 📋 Scope: \n")
     print(v)
     print()
@@ -73,6 +81,8 @@ def Changes():
     return dictPossibilitiesChanges.get(ch,"GLOBAL (🌐)")
 
 def Keywords():
+    print()
+    print("__________________________________")
     keywords = input("🔑⌨️ Keyword(s): ")
     return keywords    
 
@@ -152,14 +162,16 @@ def commitToRepo(inputTopic,inputBody):
     print("Commit Message: \n")
     print(inputMsg)
     print()
+    print("___________________________________________")
+    print()
     print("""
     ⚬ Checking for unstaged commits...
     """)
 
     print()
-    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
 
     try:
+        returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
         returnStr.check_returncode()
     except subprocess.CalledProcessError: 
         print("❌ Checking for unstaged commits failed !")
@@ -189,11 +201,20 @@ def commitToRepo(inputTopic,inputBody):
     secParam = "git commit -m \"" + inputMsg + "\""
 
     if sys.platform.startswith('win32'):
-        retCode = subprocess.run(secParam, check=True) # windows
+        try:
+            retCode = subprocess.run(secParam, check=True) # windows
+        except subprocess.CalledProcessError:
+            print("❌ Commit - Failure !")
     elif sys.platform.startswith('linux'):
-        retCode = subprocess.run(secParam,shell=True,check=True) # linux
+        try:
+            retCode = subprocess.run(secParam,shell=True,check=True) # linux
+        except subprocess.CalledProcessError:
+            print("❌ Commit - Failure !")
     elif sys.platform.startswith('darwin'):
-        retCode = subprocess.run(secParam,shell=True,check=True)
+        try:
+            retCode = subprocess.run(secParam,shell=True,check=True)
+        except subprocess.CalledProcessError:
+            print("❌ Commit - Failure !")
 
     try:
         retCode.check_returncode()
@@ -210,9 +231,9 @@ def commitToRepo(inputTopic,inputBody):
 
     print("⚬ Trying to push...")
     print()
-    retCodePush = subprocess.run("git push",check=True,shell=True)
 
     try:
+        retCodePush = subprocess.run("git push",check=True,shell=True)
         retCodePush.check_returncode()
     except subprocess.CalledProcessError: 
         print("❌ Pushing - Failure !")
@@ -225,9 +246,9 @@ def checkIfGitRepo():
     print()
     print("⚬ Checking if this is a git repository...")
     print()
-    returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
 
     try:
+        returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
         returnStr.check_returncode()
     except subprocess.CalledProcessError: 
         print("❌ This is not a git repository !")
@@ -246,7 +267,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.5
+    🔥FireCommit - V.5.1
     - Options: op
     - Start:   s
     """)
