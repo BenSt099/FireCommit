@@ -24,8 +24,8 @@ This simple script helps you write good git commit messages. It automatically ge
 
 == Requirements
 
-- Python Vesion 3.0 or higher; https://www.python.org/downloads/[Installation]
-- prettytable library; https://pypi.org/project/prettytable/[Installation]
+- Python, Vesion >= 3.7 [ https://www.python.org/downloads/[Installation] ]
+- prettytable library [ https://pypi.org/project/prettytable/[Installation] ]
 
 == Installation
 
