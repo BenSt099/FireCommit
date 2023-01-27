@@ -49,12 +49,16 @@ Next, include the file __FireCommitScript.py__ into your repo. See **Usage** for
 ./FireCommitScript.py
 --
 
-- For UNIX:
+- For Linux:
 
 [source,shell]
 --
 python3 FireCommitScript.py
 --
+
+- For MacOS:
+
+	> Not Tested (Works on my machine 😉)
 
 == Documentation
 
