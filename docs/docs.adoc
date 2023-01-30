@@ -2,7 +2,7 @@
 
 == General Recommendations
 
-    > It doesn't matter if you type `N` or `n` when you're asked to proceed (when committing) or push.
+    > It doesn't matter if you type `N` / `n` or `Y` / `y` when you're asked to proceed (when committing) or push.
 
 == Start
 
@@ -58,15 +58,20 @@ Pass one or multiple keywords (short / oneliner):
 
 == Selecting: Scope
 
-Select a scope for your project by typing the abbreviation next to the emoji. Default scope is __global__.
+Select a scope for your project by typing the abbreviation next to the emoji. Default scope is __global__. Moreover,
+there are several options for scope if you're software has a special architecture, e.g. onion / layered.
 
 [source,shell]
 --
 Possible 🛠️ Scope:
 
-    (1)               (2)
-LOCAL (l) 📌    GLOBAL (g) 🌐
-ROOT (r) 🌳
+            (1)                               (2)
+        LOCAL 📌 (l)                     GLOBAL 🌐 (g)
+        MODULE 🗃️ (m)                    SUBMODULE 🗄️ (sm)
+        ROOT 🌳 (r)                   PERSISTENCE: 🧱 (p)
+   BUSINESS_LOGIC: ♟️ (bl)            USERINTERFACE: 🖼️ (ui)
+APPLICATION_SERVICE: 💾 (as)        DOMAIN_SERVICE: 🪛 (ds)
+   DOMAIN_MODEL: 🥝 (dm)
 
 🛠️ SCOPE: 
 --
