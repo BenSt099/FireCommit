@@ -53,7 +53,7 @@ Pass one or multiple keywords (short / oneliner):
 
 [source,shell]
 --
-🔑⌨️ Keyword(s): 
+🔑 Keyword(s): 
 --
 
 == Selecting: Scope
