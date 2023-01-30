@@ -68,7 +68,8 @@ def Changes():
         'ui': 'USERINTERFACE (🖼️)',
         'as': 'APPLICATION_SERVICE (💾)',
         'ds': 'DOMAIN_SERVICE (🪛)',
-        'dm': 'DOMAIN_MODEL (🥝)'
+        'dm': 'DOMAIN_MODEL (🥝)',
+        'd': '-'
     }
     v = PrettyTable()
     v.field_names = ["(1)","(2)"]
@@ -78,7 +79,7 @@ def Changes():
         ["ROOT 🌳 (r)","PERSISTENCE: 🧱 (p)"],
         ["BUSINESS_LOGIC: ♟️ (bl)","USERINTERFACE: 🖼️ (ui)"],
         ["APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)"],
-        ["DOMAIN_MODEL: 🥝 (dm)",""]  
+        ["DOMAIN_MODEL: 🥝 (dm)","DEFAULT: - (d)"]  
     ])                          
     v.set_style(PLAIN_COLUMNS)
     print()
@@ -87,7 +88,7 @@ def Changes():
     print(v)
     print()
     ch = input("🛠️ SCOPE: ")
-    return dictPossibilitiesChanges.get(ch,"GLOBAL (🌐)")
+    return dictPossibilitiesChanges.get(ch," - ")
 
 def Keywords():
     print()
@@ -264,7 +265,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.5.2
+    🔥FireCommit - V.5.3
     - Options: op
     - Start:   s
     """)

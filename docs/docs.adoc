@@ -58,7 +58,7 @@ Pass one or multiple keywords (short / oneliner):
 
 == Selecting: Scope
 
-Select a scope for your project by typing the abbreviation next to the emoji. Default scope is __global__. Moreover,
+Select a scope for your project by typing the abbreviation next to the emoji. Default scope is "-". Moreover,
 there are several options for scope if you're software has a special architecture, e.g. onion / layered.
 
 [source,shell]
@@ -71,7 +71,7 @@ Possible 🛠️ Scope:
         ROOT 🌳 (r)                   PERSISTENCE: 🧱 (p)
    BUSINESS_LOGIC: ♟️ (bl)            USERINTERFACE: 🖼️ (ui)
 APPLICATION_SERVICE: 💾 (as)        DOMAIN_SERVICE: 🪛 (ds)
-   DOMAIN_MODEL: 🥝 (dm)
+   DOMAIN_MODEL: 🥝 (dm)                   DEFAULT: -
 
 🛠️ SCOPE: 
 --
