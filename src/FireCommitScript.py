@@ -62,15 +62,24 @@ def Changes():
         'g': 'GLOBAL (🌐)',
         'm': 'MODULE (🗃️)',
        'sm': 'SUBMODULE (🗄️)',
-        'r': 'ROOT (🌳)'
+        'r': 'ROOT (🌳)',
+        'p': 'PERSISTENCE (🧱)',
+        'bl': 'BUSINESS_LOGIC (♟️)',
+        'ui': 'USERINTERFACE (🖼️)',
+        'as': 'APPLICATION_SERVICE (💾)',
+        'ds': 'DOMAIN_SERVICE (🪛)',
+        'dm': 'DOMAIN_MODEL (🥝)'
     }
     v = PrettyTable()
     v.field_names = ["(1)","(2)"]
     v.add_rows([
-        ["LOCAL (l) 📌","GLOBAL (g) 🌐"],
-        ["MODULE (m) 🗃️","SUBMODULE (sm) 🗄️"],
-        ["ROOT (r) 🌳",""],
-    ])
+        ["LOCAL 📌 (l)","GLOBAL 🌐 (g)"],
+        ["MODULE 🗃️ (m)","SUBMODULE 🗄️ (sm)"],
+        ["ROOT 🌳 (r)","PERSISTENCE: 🧱 (p)"],
+        ["BUSINESS_LOGIC: ♟️ (bl)","USERINTERFACE: 🖼️ (ui)"],
+        ["APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)"],
+        ["DOMAIN_MODEL: 🥝 (dm)",""]  
+    ])                          
     v.set_style(PLAIN_COLUMNS)
     print()
     print("__________________________________")
@@ -83,7 +92,7 @@ def Changes():
 def Keywords():
     print()
     print("__________________________________")
-    keywords = input("🔑⌨️ Keyword(s): ")
+    keywords = input("🔑 Keyword(s): ")
     return keywords    
 
 def Topic():  
@@ -92,19 +101,12 @@ def Topic():
        'fi': 'FIX: ✅',
         'w': 'WARNING: ⚠️',
         'f': 'FAILED: ❌',
-       'cd': 'CONTINUOUS_DELIVERY: ♾️',
         't': 'TEST: 🛡️',
         'm': 'MILESTONE: 💎',
         'r': 'RELEASE: 🎆',
         'd': 'DOCUMENTATION: 📓',
         'l': 'LINK: 🔗',
        'rf': 'REFACTORING: 🔪',
-        'g': 'GUI: 🖼️',
-       'bl': 'BUSINESS_LOGIC: ♟️',
-       'as': 'APPLICATION_SERVICE: 💾',
-       'ds': 'DOMAIN_SERVICE: 🪛',
-       'dm': 'DOMAIN_MODEL: 🥝',
-        'p': 'PERSISTENCE: 🧱',
         'a': 'ARCHITECTURE: 🏬',
         'i': 'INFRASTRUCTURE: 🎛️',
        'ii': 'INITIAL: 🏹',
@@ -124,13 +126,12 @@ def Topic():
     y.field_names = ["(1)","(2)","(3)","(4)"]
     
     y.add_rows([
-        ["FIX: ✅ (fi)","WARNING: ⚠️ (w)","FAILED: ❌ (f)","CONTINUOUS_DELIVERY: ♾️ (cd)"],
+        ["FIX: ✅ (fi)","WARNING: ⚠️ (w)","FAILED: ❌ (f)","REVERT: ♻️ (re)"],
         ["TEST: 🛡️ (t)","MILESTONE: 💎 (m)","RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)"],
-        ["LINK: 🔗 (l)","REFACTORING: 🔪 (rf)","GUI: 🖼️ (g)","BUSINESS_LOGIC: ♟️ (bl)"],
+        ["LINK: 🔗 (l)","REFACTORING: 🔪 (rf)","FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)"],
         ["ARCHITECTURE: 🏬 (a)","INFRASTRUCTURE: 🎛️ (i)","INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)"],
-        ["PERSISTENCE: 🧱 (p)","APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)","DOMAIN_MODEL: 🥝 (dm)"],
         ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘","STYLE: 🪟 (st)"],
-        ["FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)","CORE: 🌣 (co)","REVERT: ♻️ (re)"]
+        ["CORE: 🌣 (co)","","",""]
     ])
     y.set_style(PLAIN_COLUMNS)
     print("Possible 📋 TYPES: \n")
@@ -146,7 +147,7 @@ def startWithMsg():
 
     x.add_rows([
              ["👥 AUTHORS",Authors()],
-             ["🔑⌨️ KEYWORDS",Keywords()],
+             ["🔑 KEYWORDS",Keywords()],
              ["🛠️ SCOPE",Changes()],
              ["🔱 BRANCH",Branch()],
              ["🗓️ DATE",Date()],
@@ -263,7 +264,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.5.1
+    🔥FireCommit - V.5.2
     - Options: op
     - Start:   s
     """)
