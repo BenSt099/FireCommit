@@ -148,7 +148,6 @@ def startWithMsg():
 
     x.add_rows([
              ["👥 AUTHORS",Authors()],
-             #["🔑 KEYWORDS",Keywords()],
              ["🛠️ SCOPE",Changes()],
              ["🔱 BRANCH",Branch()],
              ["🗓️ DATE",Date()],
@@ -158,7 +157,7 @@ def startWithMsg():
 
 def commitToRepo(inputTopic,inputKeywords,inputBody):
     print()
-    inputMsg = inputTopic + "🔑 " + inputKeywords + "\n" + inputBody + "\n\n" + ShortListOfChanges()
+    inputMsg = inputTopic + " | 🔑 " + inputKeywords + "\n" + inputBody + "\n\n" + ShortListOfChanges()
     print()
     print("___________________________________________")
     print("Commit Message: \n")
@@ -265,7 +264,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.5.3
+    🔥FireCommit - V.5.4
     - Options: op
     - Start:   s
     """)
