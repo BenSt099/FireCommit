@@ -148,7 +148,7 @@ def startWithMsg():
 
     x.add_rows([
              ["👥 AUTHORS",Authors()],
-             ["🔑 KEYWORDS",Keywords()],
+             #["🔑 KEYWORDS",Keywords()],
              ["🛠️ SCOPE",Changes()],
              ["🔱 BRANCH",Branch()],
              ["🗓️ DATE",Date()],
@@ -156,9 +156,9 @@ def startWithMsg():
 
     return x.get_string()
 
-def commitToRepo(inputTopic,inputBody):
+def commitToRepo(inputTopic,inputKeywords,inputBody):
     print()
-    inputMsg = inputTopic + "\n" + inputBody + "\n\n" + ShortListOfChanges()
+    inputMsg = inputTopic + "🔑 " + inputKeywords + "\n" + inputBody + "\n\n" + ShortListOfChanges()
     print()
     print("___________________________________________")
     print("Commit Message: \n")
@@ -276,7 +276,7 @@ def main():
     if(inputAction == "s"):
         print()
         
-        commitToRepo(Topic(),startWithMsg())
+        commitToRepo(Topic(),Keywords(),startWithMsg())
         exitProgram()
         
     elif(inputAction == "op"):    
