@@ -33,6 +33,15 @@ FIX: ✅ (fi)     WARNING: ⚠️ (w)      FAILED: ❌ ...
 📋 TYPE: 
 --
 
+== Selecting: Keyword(s)
+
+Pass one or multiple keywords (short / oneliner): 
+
+[source,shell]
+--
+🔑 Keyword(s): 
+--
+
 == Selecting: Author(s)
 
 You can select one or mulptiple users. The default user can be selected with `d`. The default user can be displayed when running:
@@ -45,15 +54,6 @@ Default: <DefaultAuthor>
 
 To use default one, type: d
 👥 Author(s): 
---
-
-== Selecting: Keyword(s)
-
-Pass one or multiple keywords (short / oneliner): 
-
-[source,shell]
---
-🔑 Keyword(s): 
 --
 
 == Selecting: Scope
