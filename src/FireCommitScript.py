@@ -99,27 +99,22 @@ def Keywords():
 def Topic():  
     
     dictPossibilitiesTopics = {
-       'fi': 'FIX: ✅',
-        'w': 'WARNING: ⚠️',
-        'f': 'FAILED: ❌',
-        't': 'TEST: 🛡️',
-        'm': 'MILESTONE: 💎',
-        'r': 'RELEASE: 🎆',
-        'd': 'DOCUMENTATION: 📓',
-        'l': 'LINK: 🔗',
-       'rf': 'REFACTORING: 🔪',
-        'a': 'ARCHITECTURE: 🏬',
-        'i': 'INFRASTRUCTURE: 🎛️',
-       'ii': 'INITIAL: 🏹',
-       'u' : 'UPDATE: ⬆️',
-       'do': 'DOCKER: 🐳',
-       'sp': 'SPRING: 🌿',
-       'gr': 'GRADLE: 🐘',
-       'st': 'STYLE: 🪟',
-       'fe': 'FEATURE: 🎉',
-       'pe': 'PERFORMANCE: 💯',
-       'co': 'CORE: 🌣',
-       're': 'REVERT: ♻️'
+       'fi': 'FIX(✅)',
+        't': 'TEST(🛡️)',
+        'm': 'MILE(💎)',
+        'r': 'REL(🎆)',
+        'd': 'DOCS(📓)',
+        'c': 'CONN(🔗)',
+       'rf': 'REF(🔪)',
+        'a': 'ARCHI(🏬)',
+        'i': 'INFRA(🎛️)',
+       'ii': 'INIT(🏹)',
+       'u' : 'UP(⬆️)',
+       'st': 'STYLE(🪟)',
+       'fe': 'FEAT(🎉)',
+       'pe': 'PERF(💯)',
+       'co': 'CORE(🌣)',
+       're': 'REV(♻️)'
     }
 
     print()
@@ -127,19 +122,17 @@ def Topic():
     y.field_names = ["(1)","(2)","(3)","(4)"]
     
     y.add_rows([
-        ["FIX: ✅ (fi)","WARNING: ⚠️ (w)","FAILED: ❌ (f)","REVERT: ♻️ (re)"],
-        ["TEST: 🛡️ (t)","MILESTONE: 💎 (m)","RELEASE: 🎆 (r)","DOCUMENTATION: 📓 (d)"],
-        ["LINK: 🔗 (l)","REFACTORING: 🔪 (rf)","FEATURE: 🎉 (fe)","PERFORMANCE: 💯 (pe)"],
-        ["ARCHITECTURE: 🏬 (a)","INFRASTRUCTURE: 🎛️ (i)","INITIAL: 🏹 (ii)","UPDATE: ⬆️ (u)"],
-        ["DOCKER: 🐳 (do)","SPRING: 🌿 (sp)","GRADLE: 🐘","STYLE: 🪟 (st)"],
-        ["CORE: 🌣 (co)","","",""]
+        ["FIX(✅) (fi)","TEST(🛡️) (re)","MILE(💎) (m)","REL(🎆) (r)"],
+        ["DOCS(📓) (d)","CONN(🔗) (c)","REF(🔪) (rf)","ARCHI(🏬) (a)"],
+        ["INFRA(🎛️) (i)","INIT(🏹) (ii)","UP(⬆️) (u)","STYLE(🪟) (st)"],
+        ["FEAT(🎉) (fe)","PERF(💯) (pe)","CORE(🌣) (co)","REV(♻️) (re)"]
     ])
     y.set_style(PLAIN_COLUMNS)
     print("Possible 📋 TYPES: \n")
     print(y)
     print()
     top = input("📋 TYPE: ")
-    return dictPossibilitiesTopics.get(top,"UPDATE: ⬆️")  
+    return dictPossibilitiesTopics.get(top,"UP(⬆️)")  
 
 def startWithMsg():
     x = PrettyTable()
@@ -264,7 +257,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.5.4
+    🔥FireCommit - V.5.5
     - Options: op
     - Start:   s
     """)
