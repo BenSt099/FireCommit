@@ -20,6 +20,10 @@ def Branch():
         return "-"    
     return returnStr.stdout.strip()
 
+def getModificationsFromFile():
+    returnStr = subprocess.run("git diff --staged --stat", capture_output=True, text=True,shell=True)
+    return returnStr.stdout
+
 def Date():
     dateNow = date.today()
     return dateNow.strftime("%B %d, %Y") 
@@ -150,7 +154,7 @@ def startWithMsg():
 
 def commitToRepo(inputTopic,inputKeywords,inputBody):
     print()
-    inputMsg = inputTopic + " | 🔑 " + inputKeywords + "\n" + inputBody + "\n\n" + ShortListOfChanges()
+    inputMsg = inputTopic + " | 🔑 " + inputKeywords + "\n\n" + inputBody + "\n\n" + ShortListOfChanges() + "\n\n" + getModificationsFromFile()
     print()
     print("___________________________________________")
     print("Commit Message: \n")
