@@ -146,15 +146,13 @@ def startWithMsg():
     x.add_rows([
              ["👥 AUTHORS",Authors()],
              ["🛠️ SCOPE",Changes()],
-             ["🔱 BRANCH",Branch()],
-             ["🗓️ DATE",Date()],
-             ["🕒 TIME",Time()]])
+             ["🔱 BRANCH",Branch()]])
 
     return x.get_string()
 
 def commitToRepo(inputTopic,inputKeywords,inputBody):
     print()
-    inputMsg = inputTopic + " | 🔑 " + inputKeywords + "\n\n" + inputBody + "\n\n" + ShortListOfChanges() + "\n\n" + getModificationsFromFile()
+    inputMsg = inputTopic + " | 🔑 " + inputKeywords + "\n\n" + inputBody + "\n\n" + ShortListOfChanges() + "\n\n" + getModificationsFromFile() + "\n\n" + Date() + " | " + Time()
     print()
     print("___________________________________________")
     print("Commit Message: \n")
