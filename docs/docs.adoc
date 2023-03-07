@@ -90,7 +90,7 @@ To use default one, type: d
 🔱 BRANCH: 
 --
 
-== Checking & Commits
+== Checking
 
 If there are unstaged commits, you will see something like:
 
@@ -106,7 +106,16 @@ Otherwise, you will see:
 ✅ Everything clean !
 --
 
-Next, the script asks you if you wish to commit. Proceed with `y` / `Y` or `n` / `N`:
+== Committing
+
+Next, the script asks you if you wish to save the commit-message into a file instead of committing it.
+
+[source,shell]
+--
+>>> Save To File And Not Commit [Y | N] ? 
+--
+
+Then, you have the option to commit. Proceed with `y` / `Y` or `n` / `N`:
 
 [source,shell]
 --
