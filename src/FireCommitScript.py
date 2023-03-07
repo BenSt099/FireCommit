@@ -141,9 +141,9 @@ def Topic():
 def saveToFile(commitMsg):
     save = input(">>> Save To File And Not Commit [Y | N] ? ")
     if(save == "y" or save == "Y"):
-        with open("commitmsg.txt", "w") as outputFile:
+        with open("commit-msg.txt", "w", encoding="utf-8") as outputFile:
             outputFile.write(commitMsg)
-            exitProgram()
+        exitProgram()
 
 def startWithMsg():
     x = PrettyTable()
