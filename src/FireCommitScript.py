@@ -138,6 +138,13 @@ def Topic():
     top = input("📋 TYPE: ")
     return dictPossibilitiesTopics.get(top,"UP(⬆️)")  
 
+def saveToFile(commitMsg):
+    save = input(">>> Save To File And Not Commit [Y | N] ? ")
+    if(save == "y" or save == "Y"):
+        with open("commitmsg.txt", "w") as outputFile:
+            outputFile.write(commitMsg)
+            exitProgram()
+
 def startWithMsg():
     x = PrettyTable()
     x.set_style(PLAIN_COLUMNS)
@@ -182,6 +189,8 @@ def commitToRepo(inputTopic,inputKeywords,inputBody):
     else:
         print("✅ Everything clean !")
 
+    print()
+    saveToFile(inputMsg)
     print()
     inputStr = input(">>> Proceed [Y | N] ? ")
 
@@ -259,7 +268,7 @@ def exitProgram():
 
 def main():
     print("""
-    🔥FireCommit - V.5.6
+    🔥FireCommit - V.5.7
     - Options: op
     - Start:   s
     """)
