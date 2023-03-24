@@ -1,3 +1,8 @@
+###############################################
+################### Imports ###################
+###############################################
+
+
 import sys
 import time
 import subprocess
@@ -6,160 +11,46 @@ from prettytable import PLAIN_COLUMNS
 from datetime import date
 from datetime import datetime
 
-def Branch():
-    print()
-    print("__________________________________")
-    print("🔱 BRANCH")
-    returnStr = subprocess.run("git branch", capture_output=True, text=True,shell=True)
-    print("Default: " + returnStr.stdout)
-    print("To use default one, type: d")
-    branchOfRepo = input("🔱 BRANCH: ")
-    if(branchOfRepo == "d"):
-        return returnStr.stdout.strip()
-    if(branchOfRepo != "" or len(branchOfRepo.strip()) == 0):
-        return "-"    
-    return returnStr.stdout.strip()
 
-def getModificationsFromFile():
+###############################################
+############## Support Functions ##############
+###############################################
+
+
+def getModificationsFromFiles():
     returnStr = subprocess.run("git diff --staged --stat", capture_output=True, text=True,shell=True)
     return returnStr.stdout
 
-def Date():
-    dateNow = date.today()
-    return dateNow.strftime("%B %d, %Y") 
-
-def Time():
-    timeNow = datetime.now()
-    return timeNow.strftime("%H:%M:%S")
-
-def Authors():
-    print()
-    print("__________________________________")
-    print("👥 Author(s)")
-    returnStr = subprocess.run("git config user.name", capture_output=True, text=True,shell=True)
-    print("Default: " + returnStr.stdout)
-    print("To use default one, type: d")
-    authorS = input("👥 Author(s): ")
-    if(authorS == "d"):
-        return returnStr.stdout.strip()
-    if(authorS.strip() != "" or len(authorS.strip()) == 0):
-        return "-"
-    return returnStr.stdout.strip()
-
-def ShortListOfChanges():
-    print()
-    print("__________________________________")
-    listOfChanges = "🗒️ DESCRIPTION OF CHANGES: \n\n"
-    print("🗒️ DESCRIPTION OF CHANGES: ")
-    print("If you're done, type: r")
-    while(True):
-        inputItem = input("Item: ")
-        if(inputItem == "r"):
-            break
-        listOfChanges = listOfChanges + "- " + inputItem + "\n"
-
-    return listOfChanges
-
-def Changes():
-    dictPossibilitiesChanges = {
-        'l': 'LOCAL (📌)',
-        'g': 'GLOBAL (🌐)',
-        'm': 'MODULE (🗃️)',
-       'sm': 'SUBMODULE (🗄️)',
-        'r': 'ROOT (🌳)',
-        'p': 'PERSISTENCE (🧱)',
-        'bl': 'BUSINESS_LOGIC (♟️)',
-        'ui': 'USERINTERFACE (🖼️)',
-        'as': 'APPLICATION_SERVICE (💾)',
-        'ds': 'DOMAIN_SERVICE (🪛)',
-        'dm': 'DOMAIN_MODEL (🥝)',
-        'd': '-'
-    }
-    v = PrettyTable()
-    v.field_names = ["(1)","(2)"]
-    v.add_rows([
-        ["LOCAL 📌 (l)","GLOBAL 🌐 (g)"],
-        ["MODULE 🗃️ (m)","SUBMODULE 🗄️ (sm)"],
-        ["ROOT 🌳 (r)","PERSISTENCE: 🧱 (p)"],
-        ["BUSINESS_LOGIC: ♟️ (bl)","USERINTERFACE: 🖼️ (ui)"],
-        ["APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)"],
-        ["DOMAIN_MODEL: 🥝 (dm)","DEFAULT: - (d)"]  
-    ])                          
-    v.set_style(PLAIN_COLUMNS)
-    print()
-    print("__________________________________")
-    print("Possible 🛠️ Scope: \n")
-    print(v)
-    print()
-    ch = input("🛠️ SCOPE: ")
-    return dictPossibilitiesChanges.get(ch," - ")
-
-def Keywords():
-    print()
-    print("__________________________________")
-    keywords = input("🔑 Keyword(s): ")
-    return keywords    
-
-def Topic():  
-    
-    dictPossibilitiesTopics = {
-       'fi': 'FIX(✅)',
-        't': 'TEST(🛡️)',
-        'm': 'MILE(💎)',
-        'r': 'REL(🎆)',
-        'd': 'DOCS(📓)',
-        'c': 'CONN(🔗)',
-       'rf': 'REF(🔪)',
-        'a': 'ARCHI(🏬)',
-        'i': 'INFRA(🎛️)',
-       'ii': 'INIT(🏹)',
-       'u' : 'UP(⬆️)',
-       'st': 'STYLE(🪟)',
-       'fe': 'FEAT(🎉)',
-       'pe': 'PERF(💯)',
-       'co': 'CORE(🌣)',
-       're': 'REV(♻️)'
-    }
-
-    print()
-    y = PrettyTable()
-    y.field_names = ["(1)","(2)","(3)","(4)"]
-    
-    y.add_rows([
-        ["FIX(✅) (fi)","TEST(🛡️) (re)","MILE(💎) (m)","REL(🎆) (r)"],
-        ["DOCS(📓) (d)","CONN(🔗) (c)","REF(🔪) (rf)","ARCHI(🏬) (a)"],
-        ["INFRA(🎛️) (i)","INIT(🏹) (ii)","UP(⬆️) (u)","STYLE(🪟) (st)"],
-        ["FEAT(🎉) (fe)","PERF(💯) (pe)","CORE(🌣) (co)","REV(♻️) (re)"]
-    ])
-    y.set_style(PLAIN_COLUMNS)
-    print("Possible 📋 TYPES: \n")
-    print(y)
-    print()
-    top = input("📋 TYPE: ")
-    return dictPossibilitiesTopics.get(top,"UP(⬆️)")  
 
 def saveToFile(commitMsg):
     save = input(">>> Save To File And Not Commit [Y | N] ? ")
     if(save == "y" or save == "Y"):
         with open("commit-msg.txt", "w", encoding="utf-8") as outputFile:
             outputFile.write(commitMsg)
-        exitProgram()
+        exitScript()
 
-def startWithMsg():
-    x = PrettyTable()
-    x.set_style(PLAIN_COLUMNS)
-    x.field_names = ["  Description"," Content"]
 
-    x.add_rows([
-             ["👥 AUTHORS",Authors()],
-             ["🛠️ SCOPE",Changes()],
-             ["🔱 BRANCH",Branch()]])
-
-    return x.get_string()
-
-def commitToRepo(inputTopic,inputKeywords,inputBody):
+def checkIfCurrentDirIsGitRepo():
     print()
-    inputMsg = inputTopic + " | 🔑 " + inputKeywords + "\n\n" + inputBody + "\n\n" + ShortListOfChanges() + "\n\n" + getModificationsFromFile() + "\n\n" + Date() + " | " + Time()
+    print("⚬ Checking if this is a git repository...")
+    print()
+
+    try:
+        returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
+        returnStr.check_returncode()
+    except subprocess.CalledProcessError: 
+        print("❌ This is not a git repository !")
+        time.sleep(5)
+        exitScript()
+    print("✅ Everything ok !")
+    print()
+
+
+def assembleCommitMSG():
+    return getCommitTopic() + " | 🔑 " + getKeywords() + "\n\n" + "👥 AUTHOR".ljust(12) + getAuthorS() + "\n" + "🔱 BRANCH".ljust(12) + getWorkingBranch() + "\n\n" + getListOfChanges() + "\n\n" + getModificationsFromFiles() + "\n\n" + getCurrentDate() + " | " + getCurrentTime()
+    
+
+def runGitCommit(inputMsg):
     print()
     print("___________________________________________")
     print("Commit Message: \n")
@@ -195,7 +86,7 @@ def commitToRepo(inputTopic,inputKeywords,inputBody):
     inputStr = input(">>> Proceed [Y | N] ? ")
 
     if(inputStr == "N" or inputStr == "n"):
-        exitProgram()
+        exitScript()
 
     print("⚬ Trying to commit...")
     print()
@@ -222,65 +113,195 @@ def commitToRepo(inputTopic,inputKeywords,inputBody):
     except subprocess.CalledProcessError: 
         print("❌ Commit - Failure !")
         time.sleep(10)
-        exitProgram()
+        exitScript()
 
     print("✅ Commit - Successful !")    
+
+
+def runGitPush():
     print()
     runGitPush = input(">>> Run Git Push [Y | N] ? ")
     if(runGitPush == "N" or runGitPush == "n"):
-        exitProgram()
+        exitScript()
 
     print("⚬ Trying to push...")
     print()
-
     try:
         retCodePush = subprocess.run("git push",check=True,shell=True)
         retCodePush.check_returncode()
     except subprocess.CalledProcessError: 
         print("❌ Pushing - Failure !")
         time.sleep(5)
-        exitProgram()
+        exitScript()
 
     print("✅ Pushing - Successful !")
 
-def checkIfGitRepo():
-    print()
-    print("⚬ Checking if this is a git repository...")
-    print()
 
-    try:
-        returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
-        returnStr.check_returncode()
-    except subprocess.CalledProcessError: 
-        print("❌ This is not a git repository !")
-        time.sleep(5)
-        exitProgram()
+###############################################
+############## Parts Of COM-MSG ###############
+###############################################
 
-    print("✅ Everything ok !")
+
+def getCommitTopic():  
+    dictPossibilitiesTopics = {
+       'fi': 'FIX(✅)',
+        't': 'TEST(🛡️)',
+        'm': 'MILE(💎)',
+        'r': 'REL(🎆)',
+        'd': 'DOCS(📓)',
+        'c': 'CONN(🔗)',
+       'rf': 'REF(🔪)',
+        'a': 'ARCHI(🏬)',
+        'i': 'INFRA(🎛️)',
+       'ii': 'INIT(🏹)',
+       'u' : 'UP(⬆️)',
+       'st': 'STYLE(🪟)',
+       'fe': 'FEAT(🎉)',
+       'pe': 'PERF(💯)',
+       'co': 'CORE(🌣)',
+       're': 'REV(♻️)'
+    }
     print()
+    y = PrettyTable()
+    y.field_names = ["(1)","(2)","(3)","(4)"]
+    y.add_rows([
+        ["FIX(✅) (fi)","TEST(🛡️) (re)","MILE(💎) (m)","REL(🎆) (r)"],
+        ["DOCS(📓) (d)","CONN(🔗) (c)","REF(🔪) (rf)","ARCHI(🏬) (a)"],
+        ["INFRA(🎛️) (i)","INIT(🏹) (ii)","UP(⬆️) (u)","STYLE(🪟) (st)"],
+        ["FEAT(🎉) (fe)","PERF(💯) (pe)","CORE(🌣) (co)","REV(♻️) (re)"]
+    ])
+    y.set_style(PLAIN_COLUMNS)
+    print("Possible 📋 TOPIC: \n")
+    print(y)
+    print()
+    top = input("📋 TOPIC: ")
+    return dictPossibilitiesTopics.get(top,"UP(⬆️)")  
 
-def exitProgram():
+
+def getKeywords():
+    print()
+    print("__________________________________")
+    keywords = input("🔑 Keyword(s): ")
+    return keywords    
+
+
+def getAuthorS():
+    print()
+    print("__________________________________")
+    print("👥 Author(s)")
+    returnStr = subprocess.run("git config user.name", capture_output=True, text=True,shell=True)
+    print("Default: " + returnStr.stdout)
+    print("To use default one, type: d")
+    authorS = input("👥 Author(s): ")
+    if(authorS == "d"):
+        return returnStr.stdout.strip()
+    if(authorS.strip() != "" or len(authorS.strip()) == 0):
+        return "-"
+    return returnStr.stdout.strip()
+
+
+def getWorkingBranch():
+    print()
+    print("__________________________________")
+    print("🔱 BRANCH")
+    returnStr = subprocess.run("git branch", capture_output=True, text=True,shell=True)
+    print("Default: " + returnStr.stdout)
+    print("To use default one, type: d")
+    branchOfRepo = input("🔱 BRANCH: ")
+    if(branchOfRepo == "d"):
+        return returnStr.stdout.strip()
+    if(branchOfRepo != "" or len(branchOfRepo.strip()) == 0):
+        return "-"    
+    return returnStr.stdout.strip()
+
+
+def getListOfChanges():
+    print()
+    print("__________________________________")
+    listOfChanges = "🗒️ DESCRIPTION OF CHANGES: \n\n"
+    print("🗒️ DESCRIPTION OF CHANGES: ")
+    print("If you're done, type: r")
+    while(True):
+        inputItem = input("Item: ")
+        if(inputItem == "r"):
+            break
+        listOfChanges = listOfChanges + "- " + inputItem + "\n"
+    return listOfChanges
+
+
+def getScope():
+    dictPossibilitiesChanges = {
+        'l': 'LOCAL (📌)',
+        'g': 'GLOBAL (🌐)',
+        'm': 'MODULE (🗃️)',
+       'sm': 'SUBMODULE (🗄️)',
+        'r': 'ROOT (🌳)',
+        'p': 'PERSISTENCE (🧱)',
+        'bl': 'BUSINESS_LOGIC (♟️)',
+        'ui': 'USERINTERFACE (🖼️)',
+        'as': 'APPLICATION_SERVICE (💾)',
+        'ds': 'DOMAIN_SERVICE (🪛)',
+        'dm': 'DOMAIN_MODEL (🥝)',
+        'd': '-'
+    }
+    v = PrettyTable()
+    v.field_names = ["(1)","(2)"]
+    v.add_rows([
+        ["LOCAL 📌 (l)","GLOBAL 🌐 (g)"],
+        ["MODULE 🗃️ (m)","SUBMODULE 🗄️ (sm)"],
+        ["ROOT 🌳 (r)","PERSISTENCE: 🧱 (p)"],
+        ["BUSINESS_LOGIC: ♟️ (bl)","USERINTERFACE: 🖼️ (ui)"],
+        ["APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)"],
+        ["DOMAIN_MODEL: 🥝 (dm)","DEFAULT: - (d)"]  
+    ])                          
+    v.set_style(PLAIN_COLUMNS)
+    print()
+    print("__________________________________")
+    print("Possible 🛠️ Scope: \n")
+    print(v)
+    print()
+    ch = input("🛠️ SCOPE: ")
+    return dictPossibilitiesChanges.get(ch," - ")
+
+
+def getCurrentDate():
+    dateNow = date.today()
+    return dateNow.strftime("%B %d, %Y") 
+
+
+def getCurrentTime():
+    timeNow = datetime.now()
+    return timeNow.strftime("%H:%M:%S")
+
+
+###############################################
+############# Main Functionality ##############
+###############################################
+
+
+def exitScript():
     print("""
         - Stopping...
         - 🔥FireCommit Exited
         """)
     sys.exit()
 
+
 def main():
     print("""
-    🔥FireCommit - V.5.7
+    🔥FireCommit - V.5.8
     - Options: op
     - Start:   s
     """)
 
-    checkIfGitRepo()
+    checkIfCurrentDirIsGitRepo()
     inputAction = input("Action: ")
 
     if(inputAction == "s"):
         print()
-        
-        commitToRepo(Topic(),Keywords(),startWithMsg())
-        exitProgram()
+        runGitCommit(assembleCommitMSG())
+        runGitPush()
+        exitScript()
         
     elif(inputAction == "op"):    
         print("""
@@ -322,6 +343,11 @@ def main():
         """)
         main()
     else:
-        exitProgram()
+        exitScript()
+
+
+###############################################
+############### Start Script ##################
+###############################################
 
 main()    
