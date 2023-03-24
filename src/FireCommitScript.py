@@ -47,8 +47,15 @@ def checkIfCurrentDirIsGitRepo():
 
 
 def assembleCommitMSG():
-    return getCommitTopic() + " | 🔑 " + getKeywords() + "\n\n" + "👥 AUTHOR".ljust(12) + getAuthorS() + "\n" + "🔱 BRANCH".ljust(12) + getWorkingBranch() + "\n\n" + getListOfChanges() + "\n\n" + getModificationsFromFiles() + "\n\n" + getCurrentDate() + " | " + getCurrentTime()
-    
+    msg = getCommitTopic() + " | 🔑 " + getKeywords() + "\n\n" + "👥 AUTHOR".ljust(12) + getAuthorS() + "\n"
+
+    scope = getScope()
+    if scope != "":
+        msg = msg + "🛠️  SCOPE".ljust(12) + scope + "\n" 
+
+    msg = msg + "🔱 BRANCH".ljust(12) + getWorkingBranch() + "\n\n" + getListOfChanges() + "\n\n" + getModificationsFromFiles() + "\n\n" + getCurrentDate() + " | " + getCurrentTime()
+    return msg
+
 
 def runGitCommit(inputMsg):
     print()
@@ -258,9 +265,12 @@ def getScope():
     print()
     print("__________________________________")
     print("Possible 🛠️ Scope: \n")
+    print("No Scope in Msg: n / N \n")
     print(v)
     print()
     ch = input("🛠️ SCOPE: ")
+    if(ch == "N" or ch == "n"):
+        return ""
     return dictPossibilitiesChanges.get(ch," - ")
 
 
@@ -326,13 +336,14 @@ def main():
             - Keyword(s):
                     - Add some keywords to the commit
 
-            - Changes:
+            - Scope:
                     - Helps you to specify the impact of
                       your commit
                     - Does it effect one file in a package 
                       or the whole project ?
                     - Module / Submodule options: for Gradle
                       Moduls
+                    - Options for Onion / Layered Architecture
 
             - Branch:
                     - Specify the branch where the commit is
