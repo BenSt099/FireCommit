@@ -57,20 +57,11 @@ def assembleCommitMSG():
     return msg
 
 
-def runGitCommit(inputMsg):
-    print()
-    print("___________________________________________")
-    print("Commit Message: \n")
-    print(inputMsg)
-    print()
-    print("___________________________________________")
-    print()
+def checkForUnstagedFiles():
     print("""
-    ⚬ Checking for unstaged commits...
+    ⚬ Checking for unstaged files...
     """)
-
     print()
-
     try:
         returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
         returnStr.check_returncode()
@@ -80,13 +71,22 @@ def runGitCommit(inputMsg):
         print("⚠️ Committing might not work.")
         print()
 
-    
     if(returnStr.stdout.find("Changes not staged") != -1):
-        print("❌ Found Unstaged Commits !")
+        print("❌ Found Unstaged Files !")
         print()
     else:
-        print("✅ Everything clean !")
+        print("✅ Everything Clean !")
 
+
+def runGitCommit(inputMsg):
+    print()
+    print("___________________________________________")
+    print("Commit Message: \n")
+    print(inputMsg)
+    print()
+    print("___________________________________________")
+    print()
+    checkForUnstagedFiles()
     print()
     saveToFile(inputMsg)
     print()
