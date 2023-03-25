@@ -58,12 +58,14 @@ To use default one, type: d
 
 == Selecting: Scope
 
+UPDATE: The scope is now optional. To skip, type: `n / N`
 Select a scope for your project by typing the abbreviation next to the emoji. Default scope is "-". Moreover,
 there are several options for scope if you're software has a special architecture, e.g. onion / layered.
 
 [source,shell]
 --
 Possible 🛠️ Scope:
+No Scope in Msg: n / N
 
             (1)                               (2)
         LOCAL 📌 (l)                     GLOBAL 🌐 (g)
@@ -92,11 +94,11 @@ To use default one, type: d
 
 == Checking
 
-If there are unstaged commits, you will see something like:
+If there are unstaged files, you will see something like:
 
 [source,shell]
 --
-❌ Found Unstaged Commits !
+❌ Found Unstaged Files !
 --
 
 Otherwise, you will see:
