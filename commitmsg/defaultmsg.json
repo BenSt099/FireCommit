@@ -1,0 +1,9 @@
+{
+    "Branch": true,
+    "Scope": false,
+    "Author": true,
+    "Changes":true,
+    "Modifications": true,
+    "Date": true,
+    "Time": true
+}

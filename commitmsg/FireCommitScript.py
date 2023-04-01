@@ -2,15 +2,34 @@
 ################### Imports ###################
 ###############################################
 
-
+import os
 import sys
 import time
+import json
 import subprocess
 from prettytable import PrettyTable
 from prettytable import PLAIN_COLUMNS
 from datetime import date
 from datetime import datetime
 
+
+###############################################
+################## READ JSON ##################
+###############################################
+
+
+def isCustomJSONFilePresent():
+    if os.path.isfile("custommsg.json"):
+        return True
+    else:
+       return False
+   
+def getDataFromJSONConfigFile(filename):
+    os.chdir("commitmsg")
+    with open(filename, "r") as out:
+        data = json.load(out)    
+    return data
+    
 
 ###############################################
 ############## Support Functions ##############
@@ -46,14 +65,27 @@ def checkIfCurrentDirIsGitRepo():
     print()
 
 
-def assembleCommitMSG():
-    msg = getCommitTopic() + " | 🔑 " + getKeywords() + "\n\n" + "👥 AUTHOR".ljust(12) + getAuthorS() + "\n"
-
-    scope = getScope()
-    if scope != "":
-        msg = msg + "🛠️  SCOPE".ljust(12) + scope + "\n" 
-
-    msg = msg + "🔱 BRANCH".ljust(12) + getWorkingBranch() + "\n\n" + getListOfChanges() + "\n\n" + getModificationsFromFiles() + "\n\n" + getCurrentDate() + " | " + getCurrentTime()
+def assembleCommitMSGFromFile(filename):
+    
+    data = getDataFromJSONConfigFile(filename)
+    
+    msg = getCommitTopic() + " | 🔑 " + getKeywords() + "\n\n"
+    
+    for d in data.keys():
+        if d == "Author" and data.get(d) == True:    
+            msg = msg + "👥 AUTHOR".ljust(12) + getAuthorS() + "\n"
+        elif d == "Scope" and data.get(d) == True:
+            msg = msg + "🛠️  SCOPE".ljust(12) + getScope() + "\n" 
+        elif d == "Branch" and data.get(d) == True:
+            msg = msg + "🔱 BRANCH".ljust(12) + getWorkingBranch() + "\n\n"
+        elif d == "Changes" and data.get(d) == True:
+            msg = msg + getListOfChanges() + "\n\n"
+        elif d == "Modifications" and data.get(d) == True:
+            msg = msg + getModificationsFromFiles() + "\n\n"
+        elif d == "Date" and data.get(d) == True:
+            msg = msg +  getCurrentDate() + " " 
+        elif d == "Time" and data.get(d) == True:
+            msg = msg +  getCurrentTime() + " "     
     return msg
 
 
@@ -264,13 +296,10 @@ def getScope():
     v.set_style(PLAIN_COLUMNS)
     print()
     print("__________________________________")
-    print("Possible 🛠️ Scope: \n")
-    print("No Scope in Msg: n / N \n")
+    print("🛠️ Scope: \n")
     print(v)
     print()
     ch = input("🛠️ SCOPE: ")
-    if(ch == "N" or ch == "n"):
-        return ""
     return dictPossibilitiesChanges.get(ch," - ")
 
 
@@ -300,20 +329,28 @@ def exitScript():
 def main():
     print("""
     🔥FireCommit - V.5.8
-    - Options: op
-    - Start:   s
+    - Options:  op
+    - Start:    s
+    - Custom:   c
     """)
 
     checkIfCurrentDirIsGitRepo()
     inputAction = input("Action: ")
 
-    if(inputAction == "s"):
+    if inputAction == "s":
         print()
-        runGitCommit(assembleCommitMSG())
+        runGitCommit(assembleCommitMSGFromFile("defaultmsg.json"))
         runGitPush()
         exitScript()
-        
-    elif(inputAction == "op"):    
+    elif inputAction == "c":    
+        print()
+        if isCustomJSONFilePresent() == False:
+            print("❌ Detection Of Custom File Failed !")
+            exitScript()        
+        runGitCommit(assembleCommitMSGFromFile("custommsg.json"))
+        runGitPush()
+        exitScript()
+    elif inputAction == "op":    
         print("""
         Options:
             - Action:
