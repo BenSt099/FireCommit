@@ -328,7 +328,7 @@ def exitScript():
 
 def main():
     print("""
-    🔥FireCommit - V.5.8
+    🔥FireCommit - V.5.9
     - Options:  op
     - Start:    s
     - Custom:   c

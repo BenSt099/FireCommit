@@ -1,7 +1,7 @@
 = 🔥FireCommit
 
 image:https://img.shields.io/badge/license-GNU%20Public%20v3-critical[]
-image:https://img.shields.io/badge/version-v5.8%20--%20stable-brightgreen[]
+image:https://img.shields.io/badge/version-v5.9%20--%20stable-brightgreen[]
 image:https://img.shields.io/badge/lang-87b5e0?style=flat&logo=Python[]
 image:https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git[]
 image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
@@ -23,6 +23,7 @@ image::pictures/expofcommit.png["Exp of generated Commit msg",align="center"]
 == Description
 
 This simple script helps you write good git commit messages. It automatically generates a git commit in the same directory where you run it. 
+Moreover, the commit message is customizable with a json-file.
 
 == Requirements
 
@@ -35,12 +36,13 @@ In your git repository, add the following to your `.gitignore` :
 
 [source,shell]
 --
-FireCommitScript.py
+commitmsg/
 --
 
-Plus, add the content of the `.gitignore` in this repo (https://github.com/BenSt099/FireCommit/blob/main/.gitignore[link]) to ignore all python generated files. Then, make a commit.
+Then, make a commit.
 
-Next, include the file __FireCommitScript.py__ into your repo. See **Usage** for starting the script.
+Next, create a directory in your project's folder named `commitmsg`. Furthermore, add 
+__FireCommitScript.py__  and __defaultmsg.json__ into the directory you just created. See **Usage** for starting the script.
 
 == Usage
 
