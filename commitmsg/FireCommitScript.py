@@ -2,13 +2,12 @@
 ################### Imports ###################
 ###############################################
 
+
 import os
 import sys
 import time
 import json
 import subprocess
-from prettytable import PrettyTable
-from prettytable import PLAIN_COLUMNS
 from datetime import date
 from datetime import datetime
 
@@ -178,17 +177,12 @@ def getCommitTopic():
     
     data = getDataFromJSONConfigFile("committopics.json")
     print()
-    y = PrettyTable()
-    y.field_names = ["(1)","(2)","(3)","(4)"]
-    y.add_rows([
-        ["FIX(✅) (fi)","TEST(🛡️) (re)","MILE(💎) (m)","REL(🎆) (r)"],
-        ["DOCS(📓) (d)","CONN(🔗) (c)","REF(🔪) (rf)","ARCHI(🏬) (a)"],
-        ["INFRA(🎛️) (i)","INIT(🏹) (ii)","UP(⬆️) (u)","STYLE(🪟) (st)"],
-        ["FEAT(🎉) (fe)","PERF(💯) (pe)","CORE(🌣) (co)","REV(♻️) (re)"]
-    ])
-    y.set_style(PLAIN_COLUMNS)
+   
     print("Possible 📋 TOPIC: \n")
-    print(y)
+    
+    for d in data.keys():
+        print(d + " - " + data.get(d))
+    
     print()
     top = input("📋 TOPIC: ")
     return data.get(top,"UP(⬆️)")  
@@ -260,21 +254,12 @@ def getScope():
         'dm': 'DOMAIN_MODEL (🥝)',
         'd': '-'
     }
-    v = PrettyTable()
-    v.field_names = ["(1)","(2)"]
-    v.add_rows([
-        ["LOCAL 📌 (l)","GLOBAL 🌐 (g)"],
-        ["MODULE 🗃️ (m)","SUBMODULE 🗄️ (sm)"],
-        ["ROOT 🌳 (r)","PERSISTENCE: 🧱 (p)"],
-        ["BUSINESS_LOGIC: ♟️ (bl)","USERINTERFACE: 🖼️ (ui)"],
-        ["APPLICATION_SERVICE: 💾 (as)","DOMAIN_SERVICE: 🪛 (ds)"],
-        ["DOMAIN_MODEL: 🥝 (dm)","DEFAULT: - (d)"]  
-    ])                          
-    v.set_style(PLAIN_COLUMNS)
     print()
     print("__________________________________")
     print("🛠️ Scope: \n")
-    print(v)
+    
+    for d in dictPossibilitiesChanges.keys():
+        print(d + " - " + dictPossibilitiesChanges.get(d))
     print()
     ch = input("🛠️ SCOPE: ")
     return dictPossibilitiesChanges.get(ch," - ")
