@@ -17,16 +17,9 @@ from datetime import datetime
 ################## READ JSON ##################
 ###############################################
 
-
-def isCustomJSONFilePresent():
-    if os.path.isfile("custommsg.json"):
-        return True
-    else:
-       return False
    
 def getDataFromJSONConfigFile(filename):
-    os.chdir("commitmsg")
-    with open(filename, "r") as out:
+    with open(filename, "r", encoding="utf-8") as out:
         data = json.load(out)    
     return data
     
@@ -65,9 +58,9 @@ def checkIfCurrentDirIsGitRepo():
     print()
 
 
-def assembleCommitMSGFromFile(filename):
+def assembleCommitMSGFromFile():
     
-    data = getDataFromJSONConfigFile(filename)
+    data = getDataFromJSONConfigFile("msgstructure.json")
     
     msg = getCommitTopic() + " | 🔑 " + getKeywords() + "\n\n"
     
@@ -182,24 +175,8 @@ def runGitPush():
 
 
 def getCommitTopic():  
-    dictPossibilitiesTopics = {
-       'fi': 'FIX(✅)',
-        't': 'TEST(🛡️)',
-        'm': 'MILE(💎)',
-        'r': 'REL(🎆)',
-        'd': 'DOCS(📓)',
-        'c': 'CONN(🔗)',
-       'rf': 'REF(🔪)',
-        'a': 'ARCHI(🏬)',
-        'i': 'INFRA(🎛️)',
-       'ii': 'INIT(🏹)',
-       'u' : 'UP(⬆️)',
-       'st': 'STYLE(🪟)',
-       'fe': 'FEAT(🎉)',
-       'pe': 'PERF(💯)',
-       'co': 'CORE(🌣)',
-       're': 'REV(♻️)'
-    }
+    
+    data = getDataFromJSONConfigFile("committopics.json")
     print()
     y = PrettyTable()
     y.field_names = ["(1)","(2)","(3)","(4)"]
@@ -214,7 +191,7 @@ def getCommitTopic():
     print(y)
     print()
     top = input("📋 TOPIC: ")
-    return dictPossibilitiesTopics.get(top,"UP(⬆️)")  
+    return data.get(top,"UP(⬆️)")  
 
 
 def getKeywords():
@@ -331,23 +308,14 @@ def main():
     🔥FireCommit - V.5.9
     - Options:  op
     - Start:    s
-    - Custom:   c
     """)
 
     checkIfCurrentDirIsGitRepo()
     inputAction = input("Action: ")
-
+    os.chdir("commitmsg")
     if inputAction == "s":
         print()
-        runGitCommit(assembleCommitMSGFromFile("defaultmsg.json"))
-        runGitPush()
-        exitScript()
-    elif inputAction == "c":    
-        print()
-        if isCustomJSONFilePresent() == False:
-            print("❌ Detection Of Custom File Failed !")
-            exitScript()        
-        runGitCommit(assembleCommitMSGFromFile("custommsg.json"))
+        runGitCommit(assembleCommitMSGFromFile())
         runGitPush()
         exitScript()
     elif inputAction == "op":    
