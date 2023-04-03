@@ -1,0 +1,13 @@
+{
+    "lo": "LOCAL (📌)",
+    "gl": "GLOBAL (🌐)",
+    "mo": "MODULE (🗃️)",
+    "sm": "SUBMODULE (🗄️)",
+    "ro": "ROOT (🌳)",
+    "pe": "PERSISTENCE (🧱)",
+    "bl": "BUSINESS_LOGIC (♟️)",
+    "ui": "USERINTERFACE (🖼️)",
+    "as": "APPLICATION_SERVICE (💾)",
+    "ds": "DOMAIN_SERVICE (🪛)",
+    "dm": "DOMAIN_MODEL (🥝)"
+}

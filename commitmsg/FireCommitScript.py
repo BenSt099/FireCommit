@@ -240,29 +240,18 @@ def getListOfChanges():
 
 
 def getScope():
-    dictPossibilitiesChanges = {
-        'l': 'LOCAL (📌)',
-        'g': 'GLOBAL (🌐)',
-        'm': 'MODULE (🗃️)',
-       'sm': 'SUBMODULE (🗄️)',
-        'r': 'ROOT (🌳)',
-        'p': 'PERSISTENCE (🧱)',
-        'bl': 'BUSINESS_LOGIC (♟️)',
-        'ui': 'USERINTERFACE (🖼️)',
-        'as': 'APPLICATION_SERVICE (💾)',
-        'ds': 'DOMAIN_SERVICE (🪛)',
-        'dm': 'DOMAIN_MODEL (🥝)',
-        'd': '-'
-    }
+    
+    data = getDataFromJSONConfigFile("commitscope.json")
+    
     print()
     print("__________________________________")
     print("🛠️ Scope: \n")
     
-    for d in dictPossibilitiesChanges.keys():
-        print(d + " - " + dictPossibilitiesChanges.get(d))
+    for d in data.keys():
+        print(d + " - " + data.get(d))
     print()
     ch = input("🛠️ SCOPE: ")
-    return dictPossibilitiesChanges.get(ch," - ")
+    return data.get(ch," - ")
 
 
 def getCurrentDate():
