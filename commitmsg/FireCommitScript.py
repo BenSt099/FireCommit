@@ -286,7 +286,6 @@ def main():
 
     checkIfCurrentDirIsGitRepo()
     inputAction = input("Action: ")
-    os.chdir("commitmsg")
     if inputAction == "s":
         print()
         runGitCommit(assembleCommitMSGFromFile())
