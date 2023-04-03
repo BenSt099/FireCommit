@@ -2,9 +2,11 @@
 
 == General Recommendations
 
-    > It doesn't matter if you type `N` / `n` or `Y` / `y` when you're asked to proceed (when committing) or push.
+    > It doesn't matter if you type `N` / `n` or `Y` / `y` when you're asked to proceed.
 
-== Start
+== Quick Start
+
+=== Start
 
 When the scrip start, you see something similar to this:
 
@@ -19,7 +21,7 @@ Action:
 
 To see possible options / help, type `op`. If you want to generate a git commit message, just type: `s`.
 
-== Selecting: Topic
+=== Selecting: Topic
 
 Select a topic for your commit. Type the small letter that is displayed right next to the topic, e.g. `FIX` -> `fi`. Default Type is __Update__.
 
@@ -33,7 +35,7 @@ FIX: ✅ (fi)     WARNING: ⚠️ (w)      FAILED: ❌ ...
 📋 TYPE: 
 --
 
-== Selecting: Keyword(s)
+==== Selecting: Keyword(s)
 
 Pass one or multiple keywords (short / oneliner): 
 
@@ -42,7 +44,7 @@ Pass one or multiple keywords (short / oneliner):
 🔑 Keyword(s): 
 --
 
-== Selecting: Author(s)
+=== Selecting: Author(s)
 
 You can select one or mulptiple users. The default user can be selected with `d`. The default user can be displayed when running:
 `git config user.name`.
@@ -56,16 +58,15 @@ To use default one, type: d
 👥 Author(s): 
 --
 
-== Selecting: Scope
+=== Selecting: Scope
 
-UPDATE: The scope is now optional. To skip, type: `n / N`
-Select a scope for your project by typing the abbreviation next to the emoji. Default scope is "-". Moreover,
+UPDATE: The scope is now optional. To include it into the message, see **Modifications**.
+Select a scope for your project by typing the abbreviation next to the emoji. Default scope is "GLOBAL 🌐". Moreover,
 there are several options for scope if you're software has a special architecture, e.g. onion / layered.
 
 [source,shell]
 --
-Possible 🛠️ Scope:
-No Scope in Msg: n / N
+🛠️ Scope:
 
             (1)                               (2)
         LOCAL 📌 (l)                     GLOBAL 🌐 (g)
@@ -78,7 +79,7 @@ APPLICATION_SERVICE: 💾 (as)        DOMAIN_SERVICE: 🪛 (ds)
 🛠️ SCOPE: 
 --
 
-== Selecting: Branch
+=== Selecting: Branch
 
 Select the branch you want to commit to. The default one can be displayed when typing `git branch`. Use `d` to select __<DefaultBranch>__.
 
@@ -92,7 +93,7 @@ To use default one, type: d
 🔱 BRANCH: 
 --
 
-== Checking
+=== Checking
 
 If there are unstaged files, you will see something like:
 
@@ -108,7 +109,7 @@ Otherwise, you will see:
 ✅ Everything clean !
 --
 
-== Committing
+=== Committing
 
 Next, the script asks you if you wish to save the commit-message into a file instead of committing it.
 
@@ -124,7 +125,7 @@ Then, you have the option to commit. Proceed with `y` / `Y` or `n` / `N`:
 >>> Proceed [Y | N] ? 
 --
 
-== Final Push
+=== Final Push
 
 Now, the commit is done. Finally, you can choose if you want to push the commit or not (`y` / `Y` or `n` / `N`):
 
@@ -134,3 +135,13 @@ Now, the commit is done. Finally, you can choose if you want to push the commit 
 --
 
 After this descision the script terminates.
+
+== Modifications
+
+You may want to modify the commit structure. This can be done via the provided json-files.
+
+1. For Modifying the commit structure, enable/disable options in __msgstructure.json__ .
+2. For Providing more topics, add a new option in __committopics.json__ .
+3. For Providing more options in scope, add a new option in __commitscope.json__ .
+
+-> After the files have been saved, start the script. It automatically loads the new changes.

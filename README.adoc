@@ -9,21 +9,22 @@ image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
 [.text-center]
 image::pictures/expofcommit.png["Exp of generated Commit msg",align="center"]
 
-
 == Features
 
  > The script offers an easy step-to-step protocol for generating a commit message.
 
- > You can directly run git commit and git push very quickly from the script.
+ > Committing & Pushing via script.
 
  > If any files are unstaged, the script warns you.
 
  > You can get the commit message without committing. It will be written to a txt-file where you can copy it.
 
+ > Modifications to the commit message can be made via the provided json-config files.
+
 == Description
 
-This simple script helps you write good git commit messages. It automatically generates a git commit in the same directory where you run it. 
-Moreover, the commit message is customizable with a json-file.
+In large projects it's important to use verbose and structured commit messages. This can be challenging when working in a big team with many
+developers. The provided script helps you with that. 
 
 == Requirements
 
@@ -41,7 +42,7 @@ commitmsg/
 Then, make a commit.
 
 Next, create a directory in your project's folder named `commitmsg`. Furthermore, add 
-__FireCommitScript.py__  and __defaultmsg.json__ into the directory you just created. See **Usage** for starting the script.
+the provided files https://github.com/BenSt099/FireCommit/releases[See Latest Release] into the directory you just created. See **Usage** for starting the script.
 
 == Usage
 
@@ -65,7 +66,7 @@ python3 FireCommitScript.py
 
 == Documentation
 
-- The script is mostly self-explaining and guides you through every step
+- The script is mostly self-explaining and guides you through every step.
 - If you still need some help, type "op" for displaying options when the script starts.
 - For the full documentation, click https://github.com/BenSt099/FireCommit/blob/main/docs/docs.adoc[here].
 

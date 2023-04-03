@@ -251,7 +251,7 @@ def getScope():
         print(d + " - " + data.get(d))
     print()
     ch = input("🛠️ SCOPE: ")
-    return data.get(ch," - ")
+    return data.get(ch,"GLOBAL 🌐")
 
 
 def getCurrentDate():
