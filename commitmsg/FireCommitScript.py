@@ -8,6 +8,7 @@ import sys
 import time
 import json
 import subprocess
+from pathlib import Path
 from datetime import date
 from datetime import datetime
 
@@ -16,12 +17,40 @@ from datetime import datetime
 ################## READ JSON ##################
 ###############################################
 
-   
+
 def getDataFromJSONConfigFile(filename):
     with open(filename, "r", encoding="utf-8") as out:
         data = json.load(out)    
     return data
-    
+
+
+###############################################
+################### PRE-Push ##################
+###############################################
+
+prepush = """
+if [[ $exit_code -ne 0 ]]; then
+    echo "Checks failed. Push aborted."
+    exit 1
+fi
+
+exit 0
+"""
+
+def createPrePushHook(executeCommand):
+    pathtohook = ".git/hooks/pre-push"
+    rootdir = Path(os.getcwd()).parent.absolute()
+    path =  os.path.join(rootdir, pathtohook)
+    if os.path.exists(path):
+        return 1
+
+    with open(path, "w") as f:
+        f.write("#!/bin/sh\n")
+        f.write("echo 'Checking...'\n")
+        f.write(executeCommand + "\n")
+        f.write(prepush)
+    return 0
+
 
 ###############################################
 ############## Support Functions ##############
@@ -177,7 +206,7 @@ def getCommitTopic():
     
     data = getDataFromJSONConfigFile("committopics.json")
     print()
-   
+
     print("Possible 📋 TOPIC: \n")
     
     for d in data.keys():
@@ -279,9 +308,10 @@ def exitScript():
 
 def main():
     print("""
-    🔥FireCommit - V.5.9
+    🔥FireCommit - V.6.0
     - Options:  op
     - Start:    s
+    - Pre-Push: pp
     """)
 
     checkIfCurrentDirIsGitRepo()
@@ -291,6 +321,17 @@ def main():
         runGitCommit(assembleCommitMSGFromFile())
         runGitPush()
         exitScript()
+    elif inputAction == "pp":    
+        print()
+        inputop = input("Activate Hook [pre-push] ? ")
+        if inputop == "N" or inputop == "n":
+            exitScript()
+        print()
+        comm = input("Run Command before push: ")    
+        retcode = createPrePushHook(comm)
+        if retcode != 0:
+            print("❌ Activation of hook failed.")
+        print("✅ Activation of hook successful.")
     elif inputAction == "op":    
         print("""
         Options:
