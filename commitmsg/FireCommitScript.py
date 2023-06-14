@@ -202,6 +202,15 @@ def runGitPush():
 ###############################################
 
 
+def getTopicsAsList():
+    current_directory = os.getcwd()
+    json_filename = "committopics.json"
+    json_path = os.path.join(current_directory, json_filename)
+    data = getDataFromJSONConfigFile(json_path)
+    ll = [data.get(d) for d in data.keys()]
+    ll.insert(0, "Default: UP(⬆️)")
+    return ll
+
 def getCommitTopic():  
     
     data = getDataFromJSONConfigFile("committopics.json")
