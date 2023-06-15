@@ -1,7 +1,7 @@
 = 🔥FireCommit
 
 image:https://img.shields.io/badge/license-GNU%20Public%20v3-critical[]
-image:https://img.shields.io/badge/version-v6.0%20--%20stable-brightgreen[]
+image:https://img.shields.io/badge/version-v6.0%20--%20unstable-red[]
 image:https://img.shields.io/badge/lang-87b5e0?style=flat&logo=Python[]
 image:https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git[]
 image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
@@ -10,6 +10,10 @@ image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
 image::pictures/expofcommit.png["Exp of generated Commit msg",align="center"]
 
 == Features
+
+ > Platform-independent
+
+ > Comandline- and UI-Tool
 
  > The script offers an easy step-to-step protocol for generating a commit message.
 
@@ -21,7 +25,7 @@ image::pictures/expofcommit.png["Exp of generated Commit msg",align="center"]
 
  > Modifications to the commit message can be made via the provided json-config files.
 
- > Create a git-hook (pre-push) within seconds.
+ > Create a git-hook (pre-push).
 
 == Description
 
@@ -31,20 +35,23 @@ developers. The provided script helps you with that.
 == Requirements
 
 - Python, Vesion >= 3.7 [ https://www.python.org/downloads/[Installation] ]
+- TKinter
 
 == Installation
 
-In your git repository, add the following to your `.gitignore` : 
-
-[source,shell]
---
-commitmsg/
---
-
-Then, make a commit.
-
-Next, create a directory in your project's folder named `commitmsg`. Furthermore, add 
+In your git repository, create a directory named `commitmsg`. Furthermore, add 
 the provided files https://github.com/BenSt099/FireCommit/releases[See Latest Release] into the directory you just created. See **Usage** for starting the script.
+
+When working under Linux, you may have to install tkinter separately because it is not integrated in regular Python:
+
+[source,powershell]
+--
+sudo apt-get install python3-tk (Debian)
+
+sudo dnf install python3-tkinter (Fedora)
+
+sudo pacman -S tk (Arch)
+--
 
 == Usage
 
