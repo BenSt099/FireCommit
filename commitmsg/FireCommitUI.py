@@ -5,7 +5,7 @@ from funcs import *
 
 root = Tk()
 root.title("FireCommit - v6.0")
-root.geometry("800x440")
+root.geometry("860x530")
 #root.columnconfigure(0, weight=1)
 #root.rowconfigure(0, weight=1)
 tabs = ttk.Notebook(root)
@@ -64,6 +64,17 @@ branch_cb.grid(column = 1, row = 1, sticky=(W, E))
 
 ttk.Label(fr_1_2, text="Author").grid(column=0, row=0, sticky=(W, E))
 ttk.Label(fr_1_2, text="Branch").grid(column=0, row=1, sticky=(W, E))
+ttk.Label(fr_1_2, text="Changes").grid(column=0, row=2, sticky=(W, E))
+
+changes_1 = StringVar()
+changes_2 = StringVar()
+changes_3 = StringVar()
+changes_1 = ttk.Entry(fr_1_2, width=10, textvariable=changes_1)
+changes_2 = ttk.Entry(fr_1_2, width=10, textvariable=changes_2)
+changes_3 = ttk.Entry(fr_1_2, width=10, textvariable=changes_3)
+changes_1.grid(column=1, row=2, sticky=(W, E))
+changes_2.grid(column=1, row=3, sticky=(W, E))
+changes_3.grid(column=1, row=4, sticky=(W, E))
 ###
 
 
@@ -73,9 +84,11 @@ ttk.Label(fr_1_3, text="Check1").grid(column=0, row=0, sticky=(W, E))
 ttk.Label(fr_1_3, text=check1()).grid(column=1, row=0, sticky=(W, E))
 ttk.Label(fr_1_3, text="Check2").grid(column=0, row=1, sticky=(W, E))
 ttk.Label(fr_1_3, text=check2()).grid(column=1, row=1, sticky=(W, E))
-ttk.Button(fr_1_3, text="Save", command=saveToFile).grid(column=0, row=2, sticky=W)
-ttk.Button(fr_1_3, text="Commit", command=runGitCommit).grid(column=1, row=2, sticky=W)
-ttk.Button(fr_1_3, text="Push", command=push).grid(column=2, row=2, sticky=W)
+ttk.Label(fr_1_3, text="Check3").grid(column=0, row=2, sticky=(W, E))
+ttk.Label(fr_1_3, text=check3()).grid(column=1, row=2, sticky=(W, E))
+ttk.Button(fr_1_3, text="Save", command=save).grid(column=0, row=3, sticky=W)
+ttk.Button(fr_1_3, text="Commit", command=commit(selected_topic, keywords, selected_author, selected_branch, [changes_1, changes_2, changes_3])).grid(column=1, row=3, sticky=W)
+ttk.Button(fr_1_3, text="Push", command=push).grid(column=2, row=3, sticky=W)
 ###
 
 

@@ -12,6 +12,7 @@ from pathlib import Path
 from datetime import date
 from datetime import datetime
 
+commitsucc = "❔ Undef"
 
 ###############################################
 ################## READ JSON ##################
@@ -68,6 +69,10 @@ def saveToFile(commitMsg):
         with open("commit-msg.txt", "w", encoding="utf-8") as outputFile:
             outputFile.write(commitMsg)
         exitScript()
+
+def save(msg):
+    with open("commit-msg.txt", "w", encoding="utf-8") as outputFile:
+        outputFile.write(msg)
 
 def check2():
     try:
@@ -129,6 +134,9 @@ def check1():
         return "✅ Everything Clean !"
 
 
+def check3():
+    return commitsucc
+
 def checkForUnstagedFiles():
     print("""
     ⚬ Checking for unstaged files...
@@ -149,6 +157,49 @@ def checkForUnstagedFiles():
     else:
         print("✅ Everything Clean !")
 
+def commit(selected_topic, keywords, selected_author, selected_branch, changes):
+    msg = selected_topic.get() + " | 🔑 " + keywords.get() + "\n\n"
+    msg = msg + "👥 AUTHOR".ljust(12) + selected_author.get() + "\n"
+    msg = msg + "🔱 BRANCH".ljust(12) + selected_branch.get() + "\n\n"
+    ch = ""
+    for x in changes:
+        ch += "- " + x.get() + "\n"
+    msg = msg + ch + "\n\n"
+    msg = msg + getModificationsFromFiles() + "\n\n"
+    msg = msg +  getCurrentDate() + " " 
+    msg = msg +  getCurrentTime() + " " 
+ 
+    secParam = "git commit -m \"" + msg + "\""
+    if sys.platform.startswith('win32'):
+        try:
+            retCode = subprocess.run(secParam, check=True) # windows
+        except subprocess.CalledProcessError:
+            commitsucc = "❌ Commit - Failure !" 
+            time.sleep(10)
+            commitsucc = "❔ Undef"
+    elif sys.platform.startswith('linux'):
+        try:
+            retCode = subprocess.run(secParam,shell=True,check=True) # linux
+        except subprocess.CalledProcessError:
+            commitsucc = "❌ Commit - Failure !" 
+            time.sleep(10)
+            commitsucc = "❔ Undef"
+    elif sys.platform.startswith('darwin'):
+        try:
+            retCode = subprocess.run(secParam,shell=True,check=True)
+        except subprocess.CalledProcessError:
+            commitsucc = "❌ Commit - Failure !" 
+            time.sleep(10)
+            commitsucc = "❔ Undef"
+    try:
+        retCode.check_returncode()
+    except subprocess.CalledProcessError: 
+        commitsucc = "❌ Commit - Failure !"
+        time.sleep(10)
+        commitsucc = "❔ Undef"
+    commitsucc = "✅ Commit - Successful !"
+    time.sleep(10)
+    commitsucc = "❔ Undef"
 
 def runGitCommit(inputMsg):
     print()
