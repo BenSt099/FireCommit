@@ -163,7 +163,8 @@ def commit(selected_topic, keywords, selected_author, selected_branch, changes):
     msg = msg + "🔱 BRANCH".ljust(12) + selected_branch.get() + "\n\n"
     ch = ""
     for x in changes:
-        ch += "- " + x.get() + "\n"
+        if x != "" and x != " ":
+            ch += "- " + x.get() + "\n"
     msg = msg + ch + "\n\n"
     msg = msg + getModificationsFromFiles() + "\n\n"
     msg = msg +  getCurrentDate() + " " 
@@ -175,30 +176,30 @@ def commit(selected_topic, keywords, selected_author, selected_branch, changes):
             retCode = subprocess.run(secParam, check=True) # windows
         except subprocess.CalledProcessError:
             commitsucc = "❌ Commit - Failure !" 
-            time.sleep(10)
+            time.sleep(3)
             commitsucc = "❔ Undef"
     elif sys.platform.startswith('linux'):
         try:
             retCode = subprocess.run(secParam,shell=True,check=True) # linux
         except subprocess.CalledProcessError:
             commitsucc = "❌ Commit - Failure !" 
-            time.sleep(10)
+            time.sleep(3)
             commitsucc = "❔ Undef"
     elif sys.platform.startswith('darwin'):
         try:
             retCode = subprocess.run(secParam,shell=True,check=True)
         except subprocess.CalledProcessError:
             commitsucc = "❌ Commit - Failure !" 
-            time.sleep(10)
+            time.sleep(3)
             commitsucc = "❔ Undef"
     try:
         retCode.check_returncode()
     except subprocess.CalledProcessError: 
         commitsucc = "❌ Commit - Failure !"
-        time.sleep(10)
+        time.sleep(3)
         commitsucc = "❔ Undef"
     commitsucc = "✅ Commit - Successful !"
-    time.sleep(10)
+    time.sleep(3)
     commitsucc = "❔ Undef"
 
 def runGitCommit(inputMsg):
