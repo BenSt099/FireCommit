@@ -6,7 +6,7 @@ from functools import partial
 
 root = Tk()
 root.title("FireCommit - v6.0")
-root.geometry("860x530")
+root.geometry("880x540")
 #root.columnconfigure(0, weight=1)
 #root.rowconfigure(0, weight=1)
 tabs = ttk.Notebook(root)
