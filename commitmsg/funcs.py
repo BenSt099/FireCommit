@@ -163,7 +163,7 @@ def commit(selected_topic, keywords, selected_author, selected_branch, changes):
     msg = msg + "🔱 BRANCH".ljust(12) + selected_branch.get() + "\n\n"
     ch = ""
     for x in changes:
-        if x != "" and x != " ":
+        if x.get() != "" and x.get() != " ":
             ch += "- " + x.get() + "\n"
     msg = msg + ch + "\n\n"
     msg = msg + getModificationsFromFiles() + "\n\n"
