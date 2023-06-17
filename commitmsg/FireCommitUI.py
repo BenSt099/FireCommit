@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from funcs import *
+from functools import partial
 
 
 root = Tk()
@@ -86,8 +87,9 @@ ttk.Label(fr_1_3, text="Check2").grid(column=0, row=1, sticky=(W, E))
 ttk.Label(fr_1_3, text=check2()).grid(column=1, row=1, sticky=(W, E))
 ttk.Label(fr_1_3, text="Check3").grid(column=0, row=2, sticky=(W, E))
 ttk.Label(fr_1_3, text=check3()).grid(column=1, row=2, sticky=(W, E))
+commit_with_args = partial(commit, selected_topic, keywords, selected_author, selected_branch, [changes_1, changes_2, changes_3])
 ttk.Button(fr_1_3, text="Save", command=save).grid(column=0, row=3, sticky=W)
-ttk.Button(fr_1_3, text="Commit", command=commit(selected_topic, keywords, selected_author, selected_branch, [changes_1, changes_2, changes_3])).grid(column=1, row=3, sticky=W)
+ttk.Button(fr_1_3, text="Commit", command=commit_with_args).grid(column=1, row=3, sticky=W)
 ttk.Button(fr_1_3, text="Push", command=push).grid(column=2, row=3, sticky=W)
 ###
 
