@@ -52,8 +52,14 @@ def assemble_commit_message():
         elif i.startswith('Seperator'):
             msg += data[i]
         else:
-            print("[{}]: {}".format(i, data[i]))
+            print("[{}]: ".format(i))
+            line = 0
+            for j in data[i]:
+                print("  ..{}:{}".format(line,j))
+                line += 1
             selected = input("[SELECT]: ")
+            while int(selected) < 0 or int(selected) >= len(data[i]):
+                selected = input("[SELECT]: ")                
             msg += data[i][int(selected)]
     return msg
 
@@ -127,21 +133,40 @@ def main():
     print("[CHECK]: ", status)
     
     ### Exit
-    print("[OPTION]: Start, abort.")
-    input_option = input("[S|A]: ")
-    if input_option == "A" or input_option == "a":
+    print("[OPTION]: 0:start | 1:abort.")
+    input_option = input("[0|1]: ")
+    
+    while input_option != "0" and input_option != "1":
+        input_option = input("[0|1]: ")
+    
+    if input_option == "1":
         exit_script()
     
     ### Assemble commit-message
     
     msg = assemble_commit_message()
-    print("[OPTION]: Save to file and not commit?")
-    input_option2 = input("[Y|N]: ")
-    if input_option2 == "Y" or input_option2 == "y":
+    print("[OPTION]: 0:show | 1:save to file | 2:commit | 3:abort.")
+    input_option2 = input("[0|1|2|3]: ")
+    
+    if input_option2 == "0":
+        print(msg)
+        input_option2 = input("[1|2|3]: ")
+    if input_option2 == "3":
+        exit_script()
+    
+    while input_option2 != "1" and input_option2 != "2":
+        input_option2 = input("[1|2|3]: ")
+        if input_option2 == "3":
+            exit_script()
+    
+    if input_option2 == "0":
+        print(msg)
+    elif input_option2 == "1":
         save_to_file(msg)
     else:
         check_for_unstaged_files()
         commit_to_branch(msg)
+    
     main()
 
 ###############################################
