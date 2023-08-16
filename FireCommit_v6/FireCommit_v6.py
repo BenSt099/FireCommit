@@ -36,7 +36,7 @@ def template_present():
     data = get_data_from_json_file(filepath)
     if data["name"] == "default":
         return True, "Loaded default template."
-    return True, "Loaded" + data["name"] + "template."
+    return True, "Loaded " + data["name"] + " template."
 
 
 def assemble_commit_message():

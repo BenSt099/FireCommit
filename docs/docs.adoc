@@ -1,147 +1,165 @@
 = Documentation of 🔥FireCommit
 
-== General Recommendations
-
-    > It doesn't matter if you type `N` / `n` or `Y` / `y` when you're asked to proceed.
-
-== Quick Start
+== Default Start
 
 === Start
 
-When the scrip start, you see something similar to this:
+When the scrip starts, you see something similar to this:
 
 [source,shell]
 --
-🔥FireCommit - V.x.y
-    - Options: op
-    - Start:   s
-
-Action:    
+🔥FireCommit - V.6.0
+[CHECK]:  Detected git.
+[CHECK]:  Loaded default template.
+[OPTION]: 0:start | 1:abort.
+[0|1]:  
 --
 
-To see possible options / help, type `op`. If you want to generate a git commit message, just type: `s`.
+Type `0` for actually starting and `1` for quitting.
 
-=== Selecting: Topic
+=== Next
 
-Select a topic for your commit. Type the small letter that is displayed right next to the topic, e.g. `FIX` -> `fi`. Default Type is __Update__.
+Next, it depends on how your commit-message is structured. The default one will print out:
 
 [source,shell]
 --
-Possible 📋 TYPES:
-
-  (1)                   (2)                (3)
-FIX: ✅ (fi)     WARNING: ⚠️ (w)      FAILED: ❌ ...
-
-📋 TYPE: 
+[topics]:
+  ..0:FIX(✅)
+  ..1:TEST(🛡️)
+  ..2:MILE(💎)
+  ..3:REL(🎆)
+  ..4:DOCS(📓)
+  ..5:CONN(🔗)
+  ..6:REF(🔪)
+  ..7:ARCHI(🏬)
+  ..8:INFRA(🎛️)
+  ..9:INIT(🏹)
+  ..10:UP(⬆️)
+  ..11:STYLE(🪟)
+  ..12:FEAT(🎉)
+  ..13:PERF(💯)
+  ..14:CORE(🌣)
+  ..15:REV(♻️)
+[SELECT]:   
 --
 
-==== Selecting: Keyword(s)
+Type `0`,`1` or other numbers.
 
-Pass one or multiple keywords (short / oneliner): 
+Then, it will print out:
 
 [source,shell]
 --
-🔑 Keyword(s): 
+[INPUT]:  
 --
 
-=== Selecting: Author(s)
+Now you can type some keywords.
 
-You can select one or mulptiple users. The default user can be selected with `d`. The default user can be displayed when running:
-`git config user.name`.
+=== Done
+
+When you're done, the script will print out:
 
 [source,shell]
 --
-👥 Author(s)
-Default: <DefaultAuthor>
-
-To use default one, type: d
-👥 Author(s): 
+[OPTION]: 0:show | 1:save to file | 2:commit | 3:abort.  
 --
 
-=== Selecting: Scope
+You can see the full message printed out (`0`), you can save it to a .txt-file (`1`), you can commit (`2`) or you can abort (`3`) (exits the script).
 
-UPDATE: The scope is now optional. To include it into the message, see **Modifications**.
-Select a scope for your project by typing the abbreviation next to the emoji. Default scope is "GLOBAL 🌐". Moreover,
-there are several options for scope if you're software has a special architecture, e.g. onion / layered.
+When you're finally done, the script will start a new round (If you are familiar with Python and you don't like this behaviour, you can change that in the main-function in _FireCommit_v6.py__).
+
+=== Finally Done
+
+If you abort, you will see something like this:
 
 [source,shell]
 --
-🛠️ Scope:
-
-            (1)                               (2)
-        LOCAL 📌 (l)                     GLOBAL 🌐 (g)
-        MODULE 🗃️ (m)                    SUBMODULE 🗄️ (sm)
-        ROOT 🌳 (r)                   PERSISTENCE: 🧱 (p)
-   BUSINESS_LOGIC: ♟️ (bl)            USERINTERFACE: 🖼️ (ui)
-APPLICATION_SERVICE: 💾 (as)        DOMAIN_SERVICE: 🪛 (ds)
-   DOMAIN_MODEL: 🥝 (dm)                   DEFAULT: -
-
-🛠️ SCOPE: 
+[LOG]: Stopping...
+🔥FireCommit Exited 
 --
-
-=== Selecting: Branch
-
-Select the branch you want to commit to. The default one can be displayed when typing `git branch`. Use `d` to select __<DefaultBranch>__.
-
-
-[source,shell]
---
-🔱 BRANCH
-Default: <DefaultBranch>
-
-To use default one, type: d
-🔱 BRANCH: 
---
-
-=== Checking
-
-If there are unstaged files, you will see something like:
-
-[source,shell]
---
-❌ Found Unstaged Files !
---
-
-Otherwise, you will see:
-
-[source,shell]
---
-✅ Everything clean !
---
-
-=== Committing
-
-Next, the script asks you if you wish to save the commit-message into a file instead of committing it.
-
-[source,shell]
---
->>> Save To File And Not Commit [Y | N] ? 
---
-
-Then, you have the option to commit. Proceed with `y` / `Y` or `n` / `N`:
-
-[source,shell]
---
->>> Proceed [Y | N] ? 
---
-
-=== Final Push
-
-Now, the commit is done. Finally, you can choose if you want to push the commit or not (`y` / `Y` or `n` / `N`):
-
-[source,shell]
---
->>> Run Git Push [Y | N] ?     
---
-
-After this descision the script terminates.
 
 == Modifications
 
-You may want to modify the commit structure. This can be done via the provided json-files.
+You may want to modify the commit structure. To do this, you have to modify the file __msgstruct.json__.
 
-1. For Modifying the commit structure, enable/disable options in __msgstructure.json__ .
-2. For Providing more topics, add a new option in __committopics.json__ .
-3. For Providing more options in scope, add a new option in __commitscope.json__ .
+**NOTE**: There are two [ https://github.com/BenSt099/FireCommit/tree/main/examples/exp.adoc[examples] ] that show how this is done.
 
--> After the files have been saved, start the script. It automatically loads the new changes.
+- The content of the json file will be loaded and stored in a dictionary.
+- The first attribute should be: 
+
+[source,shell]
+--
+"name":"your_template_name",
+--
+
+- Now you can structure your message:
+
+=== Options
+
+    - To select an option out of several possibilities, use:
+
+[source,shell]
+--
+"some_name":"[option1,option2,option3,...]",
+--
+
+=== Seperators
+
+    - To use a seperator (like comma, semicolon, ...), use
+
+[source,shell]
+--
+"Seperator":"some_seperator",
+--
+
+    - JSON-files contain key-value-pairs. So if you want to have more then one seperator in your file,
+    you have to name them like (it has to start with "Seperator..."): 
+
+[source,shell]
+--
+"Seperator":"some_seperator",
+...
+"Seperator2":"some_seperator",
+...
+"Seperator3":"some_seperator",
+--
+
+=== Line Break
+
+    - To get a line break / blank line, use
+
+[source,shell]
+--
+"blank":"",
+--
+
+    - JSON-files contain key-value-pairs. So if you want to have more then one blank line in your file,
+    you have to name them like (it has to start with "blank..."): 
+
+[source,shell]
+--
+"blank":"",
+...
+"blank2":"",
+...
+"blank3":"",
+--
+
+=== Keyboard Input
+
+    - To get keyboard input from the user, use
+
+[source,shell]
+--
+"some_name":"input"
+--
+
+    - **NOTE**: The value "input" has to be named liked that. Do not use a different one.
+
+=== Validation
+
+-> After the JSON-file has been saved, start the script. It automatically loads the new changes. For verification, you can take a look when the scipt starts. The script will print out:
+
+[source,shell]
+--
+[CHECK]:  Loaded 'your_template_name' template.
+--

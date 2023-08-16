@@ -1,0 +1,89 @@
+= Example of a message structure
+
+== First Example
+
+File __msgstruct1.json__:
+
+[source,shell]
+--
+{
+    "name":"default",
+    "topics":[
+        "FIX(✅)",
+        "TEST(🛡️)",
+        "MILE(💎)",
+        "REL(🎆)",
+        "DOCS(📓)",
+        "CONN(🔗)",
+        "REF(🔪)",
+        "ARCHI(🏬)",
+        "INFRA(🎛️)",
+        "INIT(🏹)",
+        "UP(⬆️)",
+        "STYLE(🪟)",
+        "FEAT(🎉)",
+        "PERF(💯)",
+        "CORE(🌣)",
+        "REV(♻️)"],
+    "Seperator":": ",
+    "keywords":"input"
+}   
+--
+
+The commit-message will look like this:
+
+[source,shell]
+--
+FIX(✅): some_input_from_the_user  
+--
+
+
+== Second Example
+
+File __msgstruct2.json__:
+
+[source,shell]
+--
+{
+    "name":"exp1",
+    "topics":[
+        "FIX(✅)",
+        "TEST(🛡️)",
+        "MILE(💎)",
+        "REL(🎆)",
+        "DOCS(📓)",
+        "CONN(🔗)",
+        "REF(🔪)",
+        "ARCHI(🏬)",
+        "INFRA(🎛️)",
+        "INIT(🏹)",
+        "UP(⬆️)",
+        "STYLE(🪟)",
+        "FEAT(🎉)",
+        "PERF(💯)",
+        "CORE(🌣)",
+        "REV(♻️)"],
+    "Seperator":": ",
+    "keywords":"input",
+    "blank1":"",
+    "blank2":"",
+    "DescriptionOfChanges":"input",
+    "blank3":"",
+    "blank4":"",
+    "desc1":"input",
+    "blank5":"",
+    "desc2":"input"
+} 
+--
+
+The commit-message will look like this:
+
+[source,shell]
+--
+FIX(✅): some_input_from_the_user  
+
+Some_input
+
+more_input
+more_input
+--
