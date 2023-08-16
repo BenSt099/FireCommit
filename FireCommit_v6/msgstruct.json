@@ -1,0 +1,21 @@
+{
+    "name":"default",
+    "topics":[
+        "FIX(✅)",
+        "TEST(🛡️)",
+        "MILE(💎)",
+        "REL(🎆)",
+        "DOCS(📓)",
+        "CONN(🔗)",
+        "REF(🔪)",
+        "ARCHI(🏬)",
+        "INFRA(🎛️)",
+        "INIT(🏹)",
+        "UP(⬆️)",
+        "STYLE(🪟)",
+        "FEAT(🎉)",
+        "PERF(💯)",
+        "CORE(🌣)",
+        "REV(♻️)"],
+    "keywords":"input"
+}

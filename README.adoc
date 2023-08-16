@@ -9,6 +9,8 @@ image:https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship[]
 [.text-center]
 image::pictures/expofcommit.png["Exp of generated Commit msg",align="center"]
 
+**NOTE**: A new version is currently in progress that resolves old problems. It is located in the folder FireCommit_v6. It's currently unstable / not ready for production.
+
 == Features
 
  > Platform-independent

@@ -3,6 +3,7 @@ from tkinter import ttk
 from funcs import *
 from functools import partial
 
+### WIP! not yet ready for use
 
 root = Tk()
 root.title("FireCommit - v6.0")
