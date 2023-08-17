@@ -7,10 +7,6 @@
 	<img alt="Static Badge" src="https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship">
 </div>
 
-<div align="center" style="margin-bottom: 70px">
-	<img alt="Exp of generated Commit msg" src="pictures/expofcommit.png">
-</div>
-
 ## Features
 
  > Commandline-Tool
