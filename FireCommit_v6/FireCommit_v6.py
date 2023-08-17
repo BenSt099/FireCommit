@@ -165,8 +165,16 @@ def main():
         save_to_file(msg)
     else:
         check_for_unstaged_files()
-        commit_to_branch(msg)
-    
+        print("[OPTION]: 0:commit | 1:abort.")
+        input_option3 = "-1"
+        while input_option3 != "0" and input_option3 != "1":
+            input_option3 = input("[0|1]: ")
+        
+        if input_option3 == "1":
+            exit_script()
+        elif input_option3 == "0":
+            commit_to_branch(msg)
+
     main()
 
 ###############################################
