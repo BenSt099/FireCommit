@@ -1,7 +1,7 @@
 <div align="center" style="margin-bottom: 70px">
 	<h1>🔥FireCommit</h1><br>
 	<img alt="Static Badge" src="https://img.shields.io/badge/license-GNU%20Public%20v3-critical">
-	<img alt="Static Badge" src="https://img.shields.io/badge/version-v6.0%20--%20stable-green">
+	<img alt="Static Badge" src="https://img.shields.io/badge/version-v6.1%20--%20stable-green">
 	<img alt="Static Badge" src="https://img.shields.io/badge/lang-87b5e0?style=flat&logo=Python">
 	<img alt="Static Badge" src="https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git">
 	<img alt="Static Badge" src="https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship">
