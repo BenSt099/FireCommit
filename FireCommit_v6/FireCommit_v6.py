@@ -6,6 +6,8 @@ import os
 import sys
 import json
 import subprocess
+from datetime import date
+from datetime import datetime
 
 
 ###############################################
@@ -39,6 +41,21 @@ def template_present():
     return True, "Loaded " + data["name"] + " template."
 
 
+def get_current_date():
+    dateNow = date.today()
+    return dateNow.strftime("%B %d, %Y") 
+
+
+def get_current_time():
+    timeNow = datetime.now()
+    return timeNow.strftime("%H:%M:%S")
+
+
+def get_modifications():
+    returnStr = subprocess.run("git diff --staged --stat", capture_output=True, text=True,shell=True)
+    return returnStr.stdout
+
+
 def assemble_commit_message():
     data = get_data_from_json_file("./msgstruct.json")
     msg = ""
@@ -51,6 +68,13 @@ def assemble_commit_message():
             msg += input("[INPUT]: ")
         elif i.startswith('Seperator'):
             msg += data[i]
+        elif i == "date":
+            msg += get_current_date()
+        elif i == "time":
+            msg += get_current_time()
+        elif i == "mods":
+            msg += get_modifications()
+            print(get_modifications())
         else:
             print("[{}]: ".format(i))
             line = 0
