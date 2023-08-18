@@ -95,7 +95,6 @@ File __msgstruct3.json__:
 [source,shell]
 --
 {
-    {
     "name":"exp1",
     "topics":[
         "FIX(✅)",
@@ -133,7 +132,6 @@ File __msgstruct3.json__:
     "Seperator2":" ",
     "time":""
 }
-} 
 --
 
 The commit-message will look like this:
