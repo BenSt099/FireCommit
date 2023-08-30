@@ -65,12 +65,12 @@ When you're done, the script will print out:
 
 [source,shell]
 --
-[OPTION]: 0:show | 1:save to file | 2:commit | 3:abort.  
+[OPTION]: 0:show | 1:save | 2:commit | 3:abort.  
 --
 
 You can see the full message printed out (`0`), you can save it to a .txt-file (`1`), you can commit (`2`) or you can abort (`3`) (exits the script).
 
-When you're finally done, the script will start a new round (If you are familiar with Python and you don't like this behaviour, you can change that in the main-function in _FireCommit.py__).
+When you're finally done, the script will start a new round (If you are familiar with Python and you don't like this behaviour, you can change that in the main-function in __FireCommit.py__).
 
 === Finally Done
 
@@ -185,12 +185,4 @@ You may want to modify the commit structure. To do this, you have to modify the 
 
 **NOTE**: All of these three commands can only be used once in the message. Moreover, they have to be named exactly like that. For an example, click https://github.com/BenSt099/FireCommit/blob/main/examples/exp.adoc[here].
 
-
-=== Validation
-
--> After the JSON-file has been saved, start the script. It automatically loads the new changes. For verification, you can take a look when the scipt starts. The script will print out:
-
-[source,shell]
---
-[CHECK]:  Loaded 'your_template_name' template.
---
+-> After the JSON-file has been saved, start the script. It automatically loads the new changes. 
