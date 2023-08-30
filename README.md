@@ -1,7 +1,7 @@
 <div align="center" style="margin-bottom: 70px">
 	<h1>🔥FireCommit</h1><br>
 	<img alt="Static Badge" src="https://img.shields.io/badge/license-GNU%20Public%20v3-critical">
-	<img alt="Static Badge" src="https://img.shields.io/badge/version-v6.1%20--%20stable-green">
+	<img alt="Static Badge" src="https://img.shields.io/badge/version-v6.2%20--%20stable-green">
 	<img alt="Static Badge" src="https://img.shields.io/badge/lang-87b5e0?style=flat&logo=Python">
 	<img alt="Static Badge" src="https://img.shields.io/badge/Extension-133b61?style=flat&logo=Git">
 	<img alt="Static Badge" src="https://img.shields.io/badge/FireCommit-910806?style=flat&logo=Fireship">
@@ -26,23 +26,25 @@ developers. The provided script helps you with that.
 
 ## Installation
 
-Download the provided files ([See Latest Release](https://github.com/BenSt099/FireCommit/releases)) and unpack them. See **Usage** for starting the script.
+Download the source code ([See latest releases](https://github.com/BenSt099/FireCommit/releases)) and unpack them. See **Usage** for starting the script.
 
 ## Usage
 
 First, choose the working directory (so where your project's `.git`-folder is located) by modifiying `config.json`.
-Under Windows, you have to escape the backslash (e.g. __C:\\\\User\\\\Projects\\\\YourProject\\\\__).
+It's set to the directory where the script is in (`./`) by default. 
+
+**NOTE:** Under Windows, you have to escape the backslash (e.g. __C:\\\\User\\\\Projects\\\\YourProject\\\\__).
 
 The script was tested on Windows and Linux (MacOS: Not Tested (Works on my machine 😉)). For starting the script, open a terminal / command prompt and type:
 
 ```bash
-python FireCommit_v6.py
+python FireCommit.py
 ```
 
 or
 
 ```bash
-python3 FireCommit_v6.py
+python3 FireCommit.py
 ```
 
 ## Documentation
