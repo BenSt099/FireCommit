@@ -26,10 +26,12 @@ developers. The provided script helps you with that.
 
 ## Installation
 
-In your git repository, create a directory named `commitmsg`. Furthermore, add 
-the provided files ([See Latest Release](https://github.com/BenSt099/FireCommit/releases)) into the directory you just created. See **Usage** for starting the script.
+Download the provided files ([See Latest Release](https://github.com/BenSt099/FireCommit/releases)) and unpack them. See **Usage** for starting the script.
 
 ## Usage
+
+First, choose the working directory (so where your project's `.git`-folder is located) by modifiying `config.json`.
+Under Windows, you have to escape the backslash (e.g. __C:\\user\\projects\\yourproject\\__).
 
 The script was tested on Windows and Linux (MacOS: Not Tested (Works on my machine 😉)). For starting the script, open a terminal / command prompt and type:
 

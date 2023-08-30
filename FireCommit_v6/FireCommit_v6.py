@@ -147,8 +147,16 @@ def exit_script():
 
 def main():
     
-    ### Start & Check
+    ### Start
     print("🔥FireCommit - V.6.0")
+    
+    ### Set Working Directory
+    data = get_data_from_json_file("config.json")
+    path_to_project = data["cwd"]
+    if path_to_project != "./":
+        os.chdir(path_to_project)
+        
+    ### Checks
     print("[CHECK]: ", check_if_git_repo())
     statusbool,status = template_present()
     if statusbool == False:
