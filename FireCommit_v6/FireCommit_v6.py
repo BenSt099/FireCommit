@@ -21,31 +21,52 @@ def get_data_from_json_file(filename):
     return data
 
 
-def check_if_git_repo():
+def run_checks():
+    check1 = ""
+    check2 = ""
+    check3 = ""
+    
+    try:
+        get_data_from_json_file("msgstruct.json")
+    except FileNotFoundError:
+        check1 = "(X) Couldn't found 'msgstruct.json'."
+    except json.JSONDecodeError:
+        check1 = "(X) File 'msgstruct.json' has errors."
+    except Exception:
+        check1 = "(X) Unknown error occurred [SOURCE: msgstruct.json]."
+    check1 = "(i) Successful."
+    
+    try:
+        get_data_from_json_file("config.json")
+    except FileNotFoundError:
+        check2 = "(X) Couldn't found 'config.json'."
+    except json.JSONDecodeError:
+        check2 = "(X) File 'config.json' has errors."
+    except Exception:
+        check2 = "(X) Unknown error occurred [SOURCE: config.json]."
+        
+    data = get_data_from_json_file("config.json")
+    path_to_project = data["cwd"]
+    
+    if os.path.isdir(path_to_project) == True:
+        os.chdir(path_to_project) 
+        check2 = "(i) Successful."
+    else:
+        check2 = "(X) File 'config.json' contains wrong path."
+    
     try:
         returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
         returnStr.check_returncode()
     except subprocess.CalledProcessError: 
-        return "[x] Couldn't detect git."
-    return "[i] Detected git."
-
-
-def template_present():
-    filepath = "./msgstruct.json"
-    if os.path.isfile(filepath) == False:
-        return False, "[x] Couldn't detect msgstruct."
+        check3 =  "(X) Couldn't detect git."
+    except Exception:
+        check3 = "(X) Unknown error occured [SOURCE: Git]."
+    check3 = "(i) Successful."
     
-    data = get_data_from_json_file(filepath)
-    if data["name"] == "default":
-        return True, "[i] Loaded default template."
-    return True, "[i] Loaded " + data["name"] + " template."
-
-
-def config_present():
-    filepath = "./config.json"
-    if os.path.isfile(filepath) == False:
-        return "[x] Couldn't detect config file."
-    return "[i] Found config file."
+    print("[CHECK]: ", check1)
+    print("[CHECK]: ", check2)
+    print("[CHECK]: ", check3)
+    print("[CWD]:   ", os.getcwd())
 
 
 def get_current_date():
@@ -106,39 +127,39 @@ def check_for_unstaged_files():
         returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
         returnStr.check_returncode()
     except subprocess.CalledProcessError: 
-        print("[x]: Checking for unstaged files failed.")
+        print("(X) Checking for unstaged files failed.")
 
     if(returnStr.stdout.find("Changes not staged") != -1):
-        print("[i]: Found unstaged files.")
+        print("(i) Found unstaged files.")
     else:
-        print("[i]: Everything Clean.")
+        print("(i) Everything Clean.")
 
 
 def commit_to_branch(msg):
-    print("[i]: Trying to commit.")
+    print("(i) Trying to commit.")
     secParam = "git commit -m \"" + msg + "\""
 
     if sys.platform.startswith('win32'):
         try:
             retCode = subprocess.run(secParam, check=True) # windows
         except subprocess.CalledProcessError:
-            print("[x]: Failed to commit.")
+            print("(X) Failed to commit.")
     elif sys.platform.startswith('linux'):
         try:
             retCode = subprocess.run(secParam,shell=True,check=True) # linux
         except subprocess.CalledProcessError:
-            print("[x]: Failed to commit.")
+            print("(X) Failed to commit.")
     elif sys.platform.startswith('darwin'):
         try:
             retCode = subprocess.run(secParam,shell=True,check=True)
         except subprocess.CalledProcessError:
-            print("[x]: Failed to commit.")
+            print("(X): Failed to commit.")
 
     try:
         retCode.check_returncode()
     except subprocess.CalledProcessError: 
-        print("[x]: Failed to commit.")
-    print("[i]: Successfully committed.") 
+        print("(X): Failed to commit.")
+    print("(i) Successfully committed.") 
 
 
 ###############################################
@@ -157,20 +178,8 @@ def main():
     ### Start
     print("🔥FireCommit - V.6.2")
     
-    ### Set Working Directory
-    data = get_data_from_json_file("config.json")
-    path_to_project = data["cwd"]
-    os.chdir(path_to_project)
-    
     ### Checks
-    print("[CHECK]: ", config_present())
-    statusbool,status = template_present()
-    if statusbool == False:
-        print(status)
-        exit_script()
-    print("[CHECK]: ", status)
-    print("[CHECK]: ", check_if_git_repo())
-    print("[CWD]:   ", os.getcwd())
+    run_checks()
     
     ### Actions
     print("[OPTION]: 0:start | 1:abort")
