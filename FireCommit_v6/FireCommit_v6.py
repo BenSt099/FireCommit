@@ -26,8 +26,8 @@ def check_if_git_repo():
         returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
         returnStr.check_returncode()
     except subprocess.CalledProcessError: 
-        return "Couldn't detect git."
-    return "Detected git."
+        return "[x] Couldn't detect git."
+    return "[i] Detected git."
 
 
 def template_present():
@@ -37,8 +37,15 @@ def template_present():
     
     data = get_data_from_json_file(filepath)
     if data["name"] == "default":
-        return True, "Loaded default template."
-    return True, "Loaded " + data["name"] + " template."
+        return True, "[i] Loaded default template."
+    return True, "[i] Loaded " + data["name"] + " template."
+
+
+def config_present():
+    filepath = "./config.json"
+    if os.path.isfile(filepath) == False:
+        return "[x] Couldn't detect config file."
+    return "[i] Found config file."
 
 
 def get_current_date():
@@ -148,63 +155,63 @@ def exit_script():
 def main():
     
     ### Start
-    print("🔥FireCommit - V.6.0")
+    print("🔥FireCommit - V.6.2")
     
     ### Set Working Directory
     data = get_data_from_json_file("config.json")
     path_to_project = data["cwd"]
-    if path_to_project != "./":
-        os.chdir(path_to_project)
-        
+    os.chdir(path_to_project)
+    
     ### Checks
-    print("[CHECK]: ", check_if_git_repo())
+    print("[CHECK]: ", config_present())
     statusbool,status = template_present()
     if statusbool == False:
         print(status)
         exit_script()
     print("[CHECK]: ", status)
+    print("[CHECK]: ", check_if_git_repo())
+    print("[CWD]:   ", os.getcwd())
     
-    ### Exit
-    print("[OPTION]: 0:start | 1:abort.")
+    ### Actions
+    print("[OPTION]: 0:start | 1:abort")
     input_option = input("[0|1]: ")
-    
     while input_option != "0" and input_option != "1":
         input_option = input("[0|1]: ")
     
+    ### Exit
     if input_option == "1":
         exit_script()
     
     ### Assemble commit-message
-    
     msg = assemble_commit_message()
-    print("[OPTION]: 0:show | 1:save to file | 2:commit | 3:abort.")
-    input_option2 = input("[0|1|2|3]: ")
+    print("[OPTION]: 0:show | 1:save | 2:commit | 3:abort.")
+    input_option3 = input("[0|1|2|3]: ")
     
-    if input_option2 == "0":
+    if input_option3 == "0":
         print(msg)
-        input_option2 = input("[1|2|3]: ")
-    if input_option2 == "3":
+        input_option3 = input("[1|2|3]: ")
+    if input_option3 == "3":
         exit_script()
     
-    while input_option2 != "1" and input_option2 != "2":
-        input_option2 = input("[1|2|3]: ")
-        if input_option2 == "3":
+    while input_option3 != "1" and input_option3 != "2":
+        input_option3 = input("[1|2|3]: ")
+        if input_option3 == "3":
             exit_script()
     
-    if input_option2 == "0":
+    if input_option3 == "0":
         print(msg)
-    elif input_option2 == "1":
+    elif input_option3 == "1":
         save_to_file(msg)
     else:
         check_for_unstaged_files()
         print("[OPTION]: 0:commit | 1:abort.")
-        input_option3 = "-1"
-        while input_option3 != "0" and input_option3 != "1":
-            input_option3 = input("[0|1]: ")
+        input_option4 = "-1"
+        while input_option4 != "0" and input_option4 != "1":
+            input_option4 = input("[0|1]: ")
         
-        if input_option3 == "1":
+        if input_option4 == "1":
             exit_script()
-        elif input_option3 == "0":
+        elif input_option4 == "0":
             commit_to_branch(msg)
 
     main()
