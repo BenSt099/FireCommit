@@ -25,6 +25,7 @@ def run_checks():
     check1 = ""
     check2 = ""
     check3 = ""
+    check4 = ""
     
     try:
         get_data_from_json_file("msgstruct.json")
@@ -63,9 +64,21 @@ def run_checks():
         check3 = "(X) Unknown error occured [SOURCE: Git]."
     check3 = "(i) Successful."
     
+    try:
+        returnStr = subprocess.run("git status", capture_output=True, text=True,check=True,shell=True)
+        returnStr.check_returncode()
+    except subprocess.CalledProcessError: 
+        check4 = "(X) Checking for unstaged files failed."
+
+    if returnStr.stdout.find("Changes not staged") != -1:
+        check4 = "(X) Found unstaged files."
+    else:
+        check4 = "(i) Successful."
+    
     print("[CHECK]: ", check1)
     print("[CHECK]: ", check2)
     print("[CHECK]: ", check3)
+    print("[CHECK]: ", check4)
     print("[CWD]:   ", os.getcwd())
 
 
