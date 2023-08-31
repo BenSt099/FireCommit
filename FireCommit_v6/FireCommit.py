@@ -210,7 +210,9 @@ def main():
     input_option3 = input("[0|1|2|3]: ")
     
     if input_option3 == "0":
+        print()
         print(msg)
+        print()
         input_option3 = input("[1|2|3]: ")
     if input_option3 == "3":
         exit_script()
@@ -235,7 +237,7 @@ def main():
             exit_script()
         elif input_option4 == "0":
             commit_to_branch(msg)
-
+    print()
     main()
 
 ###############################################
