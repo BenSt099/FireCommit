@@ -106,7 +106,7 @@ def assemble_commit_message():
         elif i.startswith('blank'):
             msg += "\n"
         elif data[i] == "input":
-            msg += input("[INPUT]: ")
+            msg += input("[{}]: ".format(i))
         elif i.startswith('Seperator'):
             msg += data[i]
         elif i == "date":
